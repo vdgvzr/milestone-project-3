@@ -22,7 +22,7 @@ def get_books():
 
 @app.route('/add_book')
 def add_book():
-    return render_template("add-book.html")
+    return render_template("add-book.html", genre=mongo.db.genre.find())
 
 
 if __name__ == '__main__':
