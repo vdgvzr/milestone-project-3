@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pen Hub</title>
+</head>
+<body>
+    {% for book in books %}
+        {{book.book_title}}
+        {{book.book_author}}
+        {{book.genre_name}}
+        {{book.book_isbn}}
+        {{book.book_blurb}}
+    {% endfor %}
+</body>
+</html>
