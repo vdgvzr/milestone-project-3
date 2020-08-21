@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h3>Add Book</h3>
+
+    <div class="row">
+        <form action="" method="POST" class="col s12">
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">create</i>
+
+                    <input id="book_title" name="book_title" type="text" class="validate">
+
+                    <label for="icon_prefix">Title</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">perm_identity</i>
+
+                    <input id="book_author" name="book_author" type="text" class="validate">
+
+                    <label for="icon_prefix">Author</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">book</i>
+
+                    <input id="book_isbn" name="book_isbn" type="text" class="validate">
+
+                    <label for="icon_prefix">ISBN</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">insert_photo</i>
+
+                    <input id="image_url" name="image_url" type="text" class="validate">
+
+                    <label for="icon_prefix">Image URL</label>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">history_edu</i>
+
+                    <textarea id="book_blurb" name="book_blurb" class="materialize-textarea"></textarea>
+
+                    <label for="icon_prefix">Blurb</label>
+                </div>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}
