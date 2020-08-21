@@ -10,30 +10,28 @@
 {{book.book_blurb}}
 
 {% block content %}
-
-    {% for book in books %}
     <div class="row">
         <div class="col s6 m2">
-            <div class="card" style="overflow: visible;">
-                <div class="card-image waves-effect waves-block waves-light">
-                    <img class="activator" src="{{book.image_url}}" alt="book_image">
-                </div>
+            {% for book in books %}
+                <div class="card" style="overflow: visible;">
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <img class="activator" src="{{book.image_url}}" alt="book_image">
+                    </div>
 
-                <div class="card-content">
-                    <span class="card-title grey-text text-darken-4"><a href="">{{book.book_title}}</a><i class="material-icons right">more_vert</i></span>
-                    <p><a class="card-link" href="#">{{book.book_author}}</a></p>
-                    <p><a class="card-link" href="#">{{book.genre_name}}</a></p>
-                </div>
+                    <div class="card-content">
+                        <span class="card-title grey-text text-darken-4"><a href="">{{book.book_title}}</a><i class="material-icons right">more_vert</i></span>
+                        <p><a class="card-link" href="#">{{book.book_author}}</a></p>
+                        <p><a class="card-link" href="#">{{book.genre_name}}</a></p>
+                    </div>
 
-                <div class="card-reveal">
-                    <span class="card-title grey-text text-darken-4">{{book.book_title}}<i class="material-icons right">close</i></span>
-                    <p>{{book.book_blurb}}</p>
-                    <p>ISBN No. {{book.book_isbn}}</p>
-                    <a href="#">More..</a>
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">{{book.book_title}}<i class="material-icons right">close</i></span>
+                        <p>{{book.book_blurb}}</p>
+                        <p>ISBN No. {{book.book_isbn}}</p>
+                        <a href="#">More..</a>
+                    </div>
                 </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
-    {% endfor %}
-
 {% endblock %}
