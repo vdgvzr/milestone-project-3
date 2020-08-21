@@ -1,17 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pen Hub</title>
-</head>
-<body>
+
+{% extends 'base.html' %}
+
+{% block content %}
+
     {% for book in books %}
+        <img src="{{book.image_url}}" alt="book_image">
         {{book.book_title}}
         {{book.book_author}}
         {{book.genre_name}}
         {{book.book_isbn}}
         {{book.book_blurb}}
     {% endfor %}
-</body>
-</html>
+
+{% endblock %}
