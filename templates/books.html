@@ -2,15 +2,34 @@
 
 {% extends 'base.html' %}
 
+{{book.image_url}}
+{{book.book_title}}
+{{book.book_author}}
+{{book.genre_name}}
+{{book.book_isbn}}
+{{book.book_blurb}}
+
 {% block content %}
 
     {% for book in books %}
-        <img src="{{book.image_url}}" alt="book_image">
-        {{book.book_title}}
-        {{book.book_author}}
-        {{book.genre_name}}
-        {{book.book_isbn}}
-        {{book.book_blurb}}
+    <div class="card">
+        <div class="card-image waves-effect waves-block waves-light">
+            <img class="activator" src="#" alt="book_image">
+        </div>
+
+        <div class="card-content">
+            <span class="card-title activator grey-text text-darken-4">{{book.book_title}}<i class="material-icons right">more_vert</i></span>
+            <h6>{{book.book_author}}</h6>
+            <p><a href="#">Buy Here</a></p>
+            <p><a href="#">{{book.genre_name}}</a></p>
+        </div>
+
+        <div class="card-reveal">
+            <span class="card-title grey-text text-darken-4">{{book.book_title}}<i class="material-icons right">close</i></span>
+            <p>{{book.book_blurb}}</p>
+            <h6>ISBN No. {{book.book_isbn}}</h6>
+        </div>
+    </div>
     {% endfor %}
 
 {% endblock %}
