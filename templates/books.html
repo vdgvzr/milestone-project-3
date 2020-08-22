@@ -3,9 +3,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="row">
-        <div class="col s6 m2">
-            {% for book in books %}
+
+    <div class="row center-cols">
+        {% for book in books %}
+            <div class="col s12 m3">
                 <div class="card" style="overflow: visible;">
                     <div class="card-image waves-effect waves-block waves-light">
                         <img class="activator" src="{{book.image_url}}" alt="book_image">
@@ -29,9 +30,10 @@
                         <a class="waves-effect waves-light btn right btn-small blue lighten-2">Edit</a>
                     </div>
                 </div>
-            {% endfor %}
-        </div>
+            </div>
+        {% endfor %}
     </div>
+    
 
     <div class="row">
         <div class="col s12 m6">

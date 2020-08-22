@@ -6,10 +6,19 @@ nav ul a {
     margin-right: 50px;
 }
 
+.center-cols > col {
+    float: none;
+    display: inline-block;
+}
+
 .btn-small {
     height: 24px;
     width: 60px;
     line-height: 24px;
     margin: 5px 5px;
     padding: 0 0.5em;
+}
+
+.card {
+    display: block;
 }
