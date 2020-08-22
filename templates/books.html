@@ -48,4 +48,12 @@
             {% endfor %}
         </div>
     </div>
+
+    <div class="row">
+        <div class="col s12 m6">
+            {% for genre in genre %}
+                <a href="#">{{genre.genre_name}}</a>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}
