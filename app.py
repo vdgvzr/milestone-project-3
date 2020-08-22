@@ -9,7 +9,10 @@ app = Flask(__name__)
 DB_PASSWORD = config('PASSWORD')
 
 app.config["MONGO_DBNAME"] = 'pen_hub'
-app.config["MONGO_URI"] = 'mongodb+srv://vdgvzr:' + DB_PASSWORD + '@myfirstcluster.iop5x.mongodb.net/pen_hub?retryWrites=true&w=majority'
+app.config["MONGO_URI"] = 'mongodb+srv://vdgvzr:' +\
+                                        DB_PASSWORD +\
+                                        '@myfirstcluster.iop5x.mongodb.net/'\
+                                        'pen_hub?retryWrites=true&w=majority'
 
 mongo = PyMongo(app)
 
