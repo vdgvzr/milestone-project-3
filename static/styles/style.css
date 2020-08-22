@@ -5,3 +5,11 @@ nav .brand-logo {
 nav ul a {
     margin-right: 50px;
 }
+
+.btn-small {
+    height: 24px;
+    width: 60px;
+    line-height: 24px;
+    margin: 5px 5px;
+    padding: 0 0.5em;
+}

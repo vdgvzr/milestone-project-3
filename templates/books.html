@@ -2,13 +2,6 @@
 
 {% extends 'base.html' %}
 
-{{book.image_url}}
-{{book.book_title}}
-{{book.book_author}}
-{{book.genre_name}}
-{{book.book_isbn}}
-{{book.book_blurb}}
-
 {% block content %}
     <div class="row">
         <div class="col s6 m2">
@@ -26,9 +19,14 @@
 
                     <div class="card-reveal">
                         <span class="card-title grey-text text-darken-4">{{book.book_title}}<i class="material-icons right">close</i></span>
+
                         <p>{{book.book_blurb}}</p>
+
                         <p>ISBN No. {{book.book_isbn}}</p>
+
                         <a href="#">More..</a>
+
+                        <a class="waves-effect waves-light btn right btn-small blue lighten-2">Edit</a>
                     </div>
                 </div>
             {% endfor %}
