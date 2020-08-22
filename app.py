@@ -25,11 +25,16 @@ def add_book():
     return render_template("add-book.html", genre=mongo.db.genre.find())
 
 
+@app.route('/book_review')
+def book_review():
+    return render_template("book-review.html", genre=mongo.db.books.find())
+
+
 @app.route('/insert_book', methods=['POST'])
 def insert_book():
     books = mongo.db.books
     books.insert_one(request.form.to_dict())
-    return redirect(url_for('get_books'))
+    return redirect(url_for('book_review'))
 
 
 if __name__ == '__main__':
