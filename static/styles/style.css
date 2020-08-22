@@ -6,6 +6,10 @@ nav ul a {
     margin-right: 50px;
 }
 
+.container {
+    padding-top: 50px;
+}
+
 .center-cols > col {
     float: none;
     display: inline-block;
