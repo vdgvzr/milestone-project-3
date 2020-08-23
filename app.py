@@ -28,17 +28,23 @@ def add_book():
     return render_template("add-book.html", genre=mongo.db.genre.find())
 
 
-@app.route('/book_review/<book_id>')
+@app.route('/book_review/<book_id>', methods=['GET'])
 def book_review(book_id):
     the_book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
     all_genre = mongo.db.genre.find()
-    return render_template('book-review.html', book=the_book, genre=all_genre)
+    reviews = mongo.db.review.find({"book_id": book_id})
+    return render_template(
+        'book-review.html',
+        book=the_book,
+        genre=all_genre,
+        review=reviews
+    )
 
 
 @app.route('/insert_book', methods=['POST'])
 def insert_book():
-    books = mongo.db.books
-    books.insert_one(request.form.to_dict())
+    book = mongo.db.books
+    book.insert_one(request.form.to_dict())
     return redirect(url_for('book_review'))
 
 
@@ -47,6 +53,19 @@ def edit_book(book_id):
     the_book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
     all_genre = mongo.db.genre.find()
     return render_template('edit-book.html', book=the_book, genre=all_genre)
+
+
+@app.route('/add_review/<book_id>', methods=['POST'])
+def add_review(book_id):
+    the_book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
+    review_object = request.form.to_dict()
+    review_object['book_id'] = book_id
+    mongo.db.review.insert_one(review_object)
+    return redirect(
+        url_for('book_review'),
+        book=the_book,
+        review=review_object
+    )
 
 
 @app.route('/update_book/<book_id>', methods=['POST'])
