@@ -10,9 +10,9 @@ DB_PASSWORD = config('PASSWORD')
 
 app.config["MONGO_DBNAME"] = 'pen_hub'
 app.config["MONGO_URI"] = 'mongodb+srv://vdgvzr:' +\
-                                        DB_PASSWORD +\
-                                        '@myfirstcluster.iop5x.mongodb.net/'\
-                                        'pen_hub?retryWrites=true&w=majority'
+                           DB_PASSWORD +\
+                          '@myfirstcluster.iop5x.mongodb.net/'\
+                          'pen_hub?retryWrites=true&w=majority'
 
 mongo = PyMongo(app)
 
@@ -60,6 +60,12 @@ def update_book(book_id):
                     'book_blurb': request.form.get('book_blurb'),
                     'book_quote': request.form.get('book_quote')
                  })
+    return redirect(url_for('get_books'))
+
+
+@app.route('/delete_book/<book_id>')
+def delete_book(book_id):
+    mongo.db.books.remove({'_id': ObjectId(book_id)})
     return redirect(url_for('get_books'))
 
 
