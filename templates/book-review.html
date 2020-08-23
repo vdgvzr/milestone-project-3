@@ -4,4 +4,22 @@
 
 {% block content %}
 
+<div class="row">
+    <div class="col s12 m3">
+        <img class="responsive-img" src="{{book.image_url}}">
+    </div>
+
+    <div class="col s12 m9">
+        <h3>{{book.book_title}}</h3>
+        <h6>{{book.book_author}}</h6>
+        <p>{{book.book_blurb}}</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col s6"></div>
+        <p> " " </p>
+        <span> - </span>
+</div>
+
 {% endblock %}

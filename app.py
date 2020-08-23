@@ -28,9 +28,11 @@ def add_book():
     return render_template("add-book.html", genre=mongo.db.genre.find())
 
 
-@app.route('/book_review')
-def book_review():
-    return render_template("book-review.html", genre=mongo.db.books.find())
+@app.route('/book_review/<book_id>')
+def book_review(book_id):
+    the_book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
+    all_genre = mongo.db.genre.find()
+    return render_template('book-review.html', book=the_book, genre=all_genre)
 
 
 @app.route('/insert_book', methods=['POST'])
