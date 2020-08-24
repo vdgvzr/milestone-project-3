@@ -57,15 +57,10 @@ def edit_book(book_id):
 
 @app.route('/add_review/<book_id>', methods=['POST'])
 def add_review(book_id):
-    the_book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
     review_object = request.form.to_dict()
     review_object['book_id'] = book_id
     mongo.db.review.insert_one(review_object)
-    return redirect(
-        url_for('book_review'),
-        book=the_book,
-        review=review_object
-    )
+    return redirect(url_for('book_review', book_id=book_id))
 
 
 @app.route('/update_book/<book_id>', methods=['POST'])
