@@ -11,10 +11,18 @@
 
     <div class="col s12 m9">
         <h3>{{book.book_title}}</h3>
+
         <h6>{{book.book_author}}</h6>
+
         <a href="#">{{book.genre_name}}</a>
+
         <p>{{book.book_blurb}}</p>
+
         <h6>ISBN-10: {{book.book_isbn}}</h6>
+
+        <a href="{{ url_for('edit_book', book_id=book._id) }}" class="waves-effect waves-light btn left btn-small yellow darken-2">Edit</a>
+
+        <a href="#modal1" class="waves-effect waves-light btn left btn-small yellow darken-2 modal-trigger">Delete</a>
     </div>
 </div>
 
@@ -52,10 +60,24 @@
             </div>
         </div>
 
-        <button class="btn waves-effect waves-light" type="submit">Add Review
+        <button class="btn waves-effect waves-light yellow darken-2" type="submit">Add Review
             <i class="material-icons right">library_add</i>
         </button>
     </form>
+</div>
+
+<div id="modal1" class="modal">
+    <div class="modal-content">
+        <h4>Are you sure you want to delete this book entry?</h4>
+    </div>
+
+    <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat left">Cancel</a>
+        
+
+        <a href="{{ url_for('delete_book', book_id=book._id) }}" class="modal-close waves-effect waves-green btn-flat right">Delete</a>
+        
+    </div>
 </div>
 
 {% endblock %}
