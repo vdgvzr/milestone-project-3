@@ -8,22 +8,21 @@
 
     <div class="carousel">
         {% for book in books %}
-            <a class="carousel-item" href="#one!"><img src="{{book.image_url}}"></a>
+            <a class="carousel-item" href="{{ url_for('book_review', book_id=book._id) }}"><img src="{{book.image_url}}"></a>
         {% endfor %}
     </div>
 
     <div class="row">
-        {% for quote in quotes %}
-            <div class="col s12 m6">
-                <div class="card grey darken-2">
-                    <div class="card-content white-text">
-                        <p>"{{quote.book_quote}}"</p>
+        <div class="col s12 m6">
+            <div id="quote-box"></div>
 
-                        <span class="card-title">- {{quote.book_author}}</span>
-                    </div>
-                </div> 
-            </div>
-        {% endfor %}
+            {% for quote in quotes %}
+                <div class="quote-content">
+                    <p>"{{quote.book_quote}}"</p>
+                    <p> - {{quote.book_author}}</p>
+                </div>
+            {% endfor %}
+        </div>
     </div>
 
     <div class="row">

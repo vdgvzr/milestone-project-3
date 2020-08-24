@@ -13,6 +13,10 @@ nav ul a {
     margin-right: 50px;
 }
 
+.container {
+    margin-top: 50px;
+}
+
 .carousel {
     height: 500px;
     top: -100px;
@@ -49,4 +53,8 @@ a {
 
 .genre-link {
     display: block;
+}
+
+.quote-content {
+    display: none;
 }
