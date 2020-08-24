@@ -17,8 +17,8 @@
 <body>
     
     <nav>
-        <div class="nav-wrapper grey darken-3">
-            <a href="{{ url_for('get_books') }}" class="brand-logo">Pen Hub</a>
+        <div class="nav-wrapper grey darken-1">
+            <a href="{{ url_for('get_books') }}" class="brand-logo">Pen <span class="hub-logo">&nbsp;hub&nbsp;</span></a>
 
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><a href="{{ url_for('add_book') }}">Add Book</a></li>
@@ -31,7 +31,7 @@
         {% endblock %}
     </div>
 
-    <footer class="page-footer grey darken-3">
+    <footer class="page-footer grey darken-1">
           <div class="container">
             <div class="row">
               <div class="col l6 s12">

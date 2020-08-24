@@ -4,6 +4,11 @@ nav .brand-logo {
     margin-left: 50px;
 }
 
+nav .hub-logo {
+    background-color: goldenrod;
+    border-radius: 5px;
+}
+
 nav ul a {
     margin-right: 50px;
 }
@@ -27,4 +32,16 @@ nav ul a {
 
 .card {
     display: block;
+}
+
+.card-title {
+    font-size: 1em;
+}
+
+.card-link {
+    color: whitesmoke;
+}
+
+a {
+    color: inherit;
 }

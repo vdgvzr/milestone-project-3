@@ -4,18 +4,18 @@
 
 {% block content %}
 
-    <h4>This week's favourites</h4>
+    <h4 class="">This week's favourites</h4>
 
     <div class="row center-cols">
         {% for book in books %}
-            <div class="col s12 m3">
+            <div class="col s12 m2">
                 <div class="card hoverable" style="overflow: visible;">
                     <div class="card-image waves-effect waves-block waves-light">
                         <img class="activator" src="{{book.image_url}}" alt="book_image">
                     </div>
 
-                    <div class="card-content">
-                        <p class="card-title grey-text text-darken-4"><a href="">{{book.book_title}}</a><i class="material-icons right">more_vert</i></p>
+                    <div class="card-content grey darken-2">
+                        <p class="card-title white-text text-darken-4"><a href="">{{book.book_title}}</a><i class="material-icons right">more_vert</i></p>
                         <p><a class="card-link" href="#">{{book.book_author}}</a></p>
                         <p><a class="card-link" href="#">{{book.genre_name}}</a></p>
                     </div>
@@ -23,15 +23,11 @@
                     <div class="card-reveal">
                         <span class="card-title grey-text text-darken-4">{{book.book_title}}<i class="material-icons right">close</i></span>
 
-                        <p>{{book.book_blurb}}</p>
-
-                        <p>ISBN-10: {{book.book_isbn}}</p>
-
                         <a href="{{ url_for('book_review', book_id=book._id) }}">More..</a>
 
-                        <a href="{{ url_for('edit_book', book_id=book._id) }}" class="waves-effect waves-light btn right btn-small blue lighten-2">Edit</a>
+                        <a href="{{ url_for('edit_book', book_id=book._id) }}" class="waves-effect waves-light btn right btn-small yellow darken-2">Edit</a>
 
-                        <a href="#modal1" class="waves-effect waves-light btn right btn-small blue lighten-2 modal-trigger">Delete</a>
+                        <a href="#modal1" class="waves-effect waves-light btn right btn-small yellow darken-2 modal-trigger">Delete</a>
                     </div>
                 </div>
             </div>
