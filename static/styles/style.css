@@ -13,8 +13,9 @@ nav ul a {
     margin-right: 50px;
 }
 
-.container {
-    padding-top: 50px;
+.carousel {
+    height: 500px;
+    top: -100px;
 }
 
 .center-cols > col {

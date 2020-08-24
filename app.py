@@ -33,6 +33,11 @@ def add_book():
     return render_template("add-book.html", genre=mongo.db.genre.find())
 
 
+@app.route('/all_books')
+def all_books():
+    return render_template("all-books.html", books=mongo.db.books.find())
+
+
 @app.route('/book_review/<book_id>', methods=['GET'])
 def book_review(book_id):
     the_book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
@@ -88,6 +93,17 @@ def update_book(book_id):
 def delete_book(book_id):
     mongo.db.books.remove({'_id': ObjectId(book_id)})
     return redirect(url_for('get_books'))
+
+
+@app.route('/genre/<genre_id>')
+def genre(genre_id):
+    the_genre = mongo.db.genre.find_one({"_id": ObjectId(genre_id)})
+    all_books = mongo.db.books.find()
+    return render_template(
+        'genre.html',
+        genre=the_genre,
+        books=all_books
+    )
 
 
 if __name__ == '__main__':
