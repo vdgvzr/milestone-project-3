@@ -20,7 +20,12 @@ mongo = PyMongo(app)
 @app.route('/')
 @app.route('/get_books')
 def get_books():
-    return render_template("books.html", books=mongo.db.books.find())
+    return render_template(
+        "books.html",
+        books=mongo.db.books.find(),
+        quotes=mongo.db.books.find(),
+        genre=mongo.db.genre.find()
+    )
 
 
 @app.route('/add_book')
