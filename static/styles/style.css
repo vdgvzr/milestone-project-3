@@ -45,3 +45,7 @@ nav ul a {
 a {
     color: inherit;
 }
+
+.genre-link {
+    display: block;
+}
