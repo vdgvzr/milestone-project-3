@@ -23,6 +23,7 @@ def get_books():
     return render_template(
         "books.html",
         books=mongo.db.books.find(),
+        recents=mongo.db.books.find(),
         quotes=mongo.db.books.find(),
         genre=mongo.db.genre.find()
     )
@@ -37,6 +38,7 @@ def add_book():
 def all_books():
     return render_template("all-books.html", books=mongo.db.books.find())
 
+
 @app.route('/genre_list')
 def genre_list():
     return render_template("genres.html", genre=mongo.db.genre.find())
@@ -50,8 +52,9 @@ def book_review(book_id):
     return render_template(
         'book-review.html',
         book=the_book,
+        recent=the_book,
         genre=all_genre,
-        review=reviews
+        review=reviews,
     )
 
 
@@ -106,7 +109,7 @@ def genre(genre_id):
     return render_template(
         'genre.html',
         genre=the_genre,
-        books=all_books
+        books=all_books,
     )
 
 
