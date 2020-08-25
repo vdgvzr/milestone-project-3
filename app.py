@@ -113,6 +113,13 @@ def genre(genre_id):
     )
 
 
+@app.route("/search")
+def search():
+    query = request.args.get("search")
+    the_book = mongo.db.books.find({"book_title": {"$regex": query}})
+    return render_template("search-results.html", book=the_book)
+
+
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),
