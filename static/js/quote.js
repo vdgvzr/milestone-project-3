@@ -9,15 +9,15 @@ function randomQuote() {
     document.getElementById('quote-box').innerHTML = quotes[randomNumber];
 }
 
-randomQuote();
-
 function change() {
-    if (count >= quotes.length) count = randomQuote();
+    if (count >= quotes.length) count = 0;
     $("#quote-box").html(quotes[count++]);
     $("#quote-box").fadeIn("slow").animate({opacity: 0.8}, 10000).fadeOut("slow",
         function() {
             return change()
-        });
+        }
+    );
+    randomQuote();
 }
 
 change();
