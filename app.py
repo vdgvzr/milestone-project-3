@@ -4,6 +4,7 @@ from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from decouple import config
 
+
 app = Flask(__name__)
 
 DB_PASSWORD = config('PASSWORD')
@@ -18,10 +19,9 @@ mongo = PyMongo(app)
 
 
 @app.route('/')
-@app.route('/get_books')
-def get_books():
+def home():
     return render_template(
-        "books.html",
+        "index.html",
         books=mongo.db.books.find(),
         recents=mongo.db.books.find(),
         quotes=mongo.db.books.find(),
@@ -62,7 +62,7 @@ def book_review(book_id):
 def insert_book():
     book = mongo.db.books
     book.insert_one(request.form.to_dict())
-    return redirect(url_for('get_books'))
+    return redirect(url_for('home'))
 
 
 @app.route('/edit_book/<book_id>')
@@ -93,13 +93,13 @@ def update_book(book_id):
                     'book_blurb': request.form.get('book_blurb'),
                     'book_quote': request.form.get('book_quote')
                  })
-    return redirect(url_for('get_books'))
+    return redirect(url_for('home'))
 
 
 @app.route('/delete_book/<book_id>')
 def delete_book(book_id):
     mongo.db.books.remove({'_id': ObjectId(book_id)})
-    return redirect(url_for('get_books'))
+    return redirect(url_for('home'))
 
 
 @app.route('/genre/<genre_id>')
@@ -113,11 +113,24 @@ def genre(genre_id):
     )
 
 
-@app.route("/search")
-def search():
+@app.route("/search_books")
+def search_books():
     query = request.args.get("search")
-    the_book = mongo.db.books.find({"book_title": {"$regex": query}})
-    return render_template("search-results.html", book=the_book)
+    search_value = mongo.db.books.find({
+        "$or": [
+            {'book_title': {"$regex": query}},
+            {'book_author': {"$regex": query}},
+            {'book_isbn': {"$regex": query}}
+        ]
+    })
+    no_of_docs = mongo.db.books.count_documents({
+        'book_title': {"$regex": query}
+    })
+    return render_template(
+        "search-results.html",
+        search=search_value,
+        no_of_docs=no_of_docs
+    )
 
 
 if __name__ == '__main__':

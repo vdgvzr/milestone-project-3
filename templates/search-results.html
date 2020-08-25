@@ -7,29 +7,27 @@
     <h4>Results for </h4>
 
     <div class="row center-cols">
-        {% for book in books|sort(attribute="book_title") %}
-            {% if book.genre_name == genre.genre_name %}
-                <div class="col s12 m2">
-                    <div class="card hoverable" style="overflow: visible;">
-                        <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="{{book.image_url}}" alt="book_image">
-                        </div>
+        {% for book in search|sort(attribute="book_title") %}
+            <div class="col s12 m2">
+                <div class="card hoverable" style="overflow: visible;">
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <img class="activator" src="{{book.image_url}}" alt="book_image">
+                    </div>
 
-                        <div class="card-content">
-                            <p class="card-title grey-text text-darken-4 activator"><a href="">{{book.book_title}}</a><i class="material-icons right">more_vert</i></p>
-                            <p><a href="#">{{book.book_author}}</a></p>
-                            <p><a href="#">{{book.genre_name}}</a></p>
-                        </div>
+                    <div class="card-content">
+                        <p class="card-title grey-text text-darken-4 activator"><a href="">{{book.book_title}}</a><i class="material-icons right">more_vert</i></p>
+                        <p><a href="#">{{book.book_author}}</a></p>
+                        <p><a href="#">{{book.genre_name}}</a></p>
+                    </div>
 
-                        <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4">{{book.book_title}}<i class="material-icons right">close</i></span>
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">{{book.book_title}}<i class="material-icons right">close</i></span>
 
 
-                            <a href="{{ url_for('book_review', book_id=book._id) }}">More..</a>
-                        </div>
+                        <a href="{{ url_for('book_review', book_id=book._id) }}">More..</a>
                     </div>
                 </div>
-            {% endif %}
+            </div>
         {% endfor %}
     </div>
 
