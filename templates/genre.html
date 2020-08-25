@@ -7,7 +7,7 @@
     <h4>{{genre.genre_name}}</h4>
 
     <div class="row center-cols">
-        {% for book in books %}
+        {% for book in books|sort(attribute="book_title") %}
             {% if book.genre_name == genre.genre_name %}
                 <div class="col s12 m2">
                     <div class="card hoverable" style="overflow: visible;">
