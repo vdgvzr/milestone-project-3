@@ -6,6 +6,20 @@
 
     <h4>Results for "{{query}}"</h4>
 
+    {% if no_of_docs == 0 %}
+        <div>
+            <h4>404</h4>
+
+            <p>Book, author or ISBN not found</p>
+
+            <img src="{{ url_for('static', filename='assets/images/empty-book.png') }}" alt="Book, author or ISBN not found" class="responsive-img">
+
+            <br>
+
+            <a href="{{ url_for('add_book') }}">Can't find what you're looking for? Add your book here!</a>
+        </div>
+    {% endif %}
+
     <div class="row center-cols">
         {% for book in search|sort(attribute="book_title") %}
             <div class="col s12 m2">

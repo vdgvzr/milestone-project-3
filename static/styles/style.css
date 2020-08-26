@@ -65,3 +65,7 @@ a {
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+img.responsive-img {
+    max-width: 50%
+}
