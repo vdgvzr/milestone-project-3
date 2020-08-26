@@ -33,13 +33,15 @@
         <p>"{{rev.review}}"</p>
         
         <p>- {{rev.username}}</p>
+
+        <p>{{rev.rating}}/5</p>
     </div>
 </div>
 
 {% endfor %}
 
 <div class="row">
-    <form action="{{ url_for('add_review', book_id=book._id) }}" method="POST" class="col s12"> 
+    <form id="rating-form" action="{{ url_for('add_review', book_id=book._id) }}" method="POST" class="col s12"> 
         <div class="row">
             <div class="input-field col s6">
                 <i class="material-icons prefix">account_circle</i>
@@ -58,6 +60,48 @@
 
                 <label for="icon_prefix">Write Your Review</label>
             </div>
+        </div>
+
+        <div class="row">
+            <p>
+                <label>
+                    <input name="rating" type="radio" value="1"/>
+
+                    <span>1</span>
+                </label>
+            </p>
+
+            <p>
+                <label>
+                    <input name="rating" type="radio" value="2"/>
+                    
+                    <span>2</span>
+                </label>
+            </p>
+
+            <p>
+                <label>
+                    <input name="rating" type="radio" value="3"/>
+                    
+                    <span>3</span>
+                </label>
+            </p>
+
+            <p>
+                <label>
+                    <input name="rating" type="radio" value="4"/>
+                    
+                    <span>4</span>
+                </label>
+            </p>
+
+            <p>
+                <label>
+                    <input name="rating" type="radio" value="5"/>
+                    
+                    <span>5</span>
+                </label>
+            </p>
         </div>
 
         <button class="btn waves-effect waves-light yellow darken-2" type="submit">Add Review

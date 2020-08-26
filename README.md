@@ -103,4 +103,4 @@ As a consumer, I would like to search for book titles and browse by popularity i
 
 ### Acknowledgements
 
-* 
+* https://webdevtrick.com/css-star-rating/ for star rating concept
