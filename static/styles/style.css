@@ -58,3 +58,9 @@ a {
 .quote-content {
     display: none;
 }
+
+.card-blurb {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
