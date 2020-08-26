@@ -124,12 +124,17 @@ def search_books():
         ]
     })
     no_of_docs = mongo.db.books.count_documents({
-        'book_title': {"$regex": query}
+        "$or": [
+            {'book_title': {"$regex": query}},
+            {'book_author': {"$regex": query}},
+            {'book_isbn': {"$regex": query}}
+        ]
     })
     return render_template(
         "search-results.html",
         search=search_value,
-        no_of_docs=no_of_docs
+        query=query,
+        no_of_docs=no_of_docs,
     )
 
 

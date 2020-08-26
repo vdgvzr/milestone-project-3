@@ -3,8 +3,8 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    
-    <h4>Results for </h4>
+
+    <h4>Results for "{{query}}"</h4>
 
     <div class="row center-cols">
         {% for book in search|sort(attribute="book_title") %}
