@@ -72,4 +72,6 @@ img.responsive-img {
 
 .review-text {
     white-space: pre-wrap;
+    margin-left: 3em;
+    margin-right: 3em;
 }

@@ -22,6 +22,16 @@
 
         <p>Reader rating: {{average}}/5</p>
 
+        <p>
+            {{review_amount}}
+
+            {% if review_amount == 1 %}
+                review
+            {% else %}
+                reviews
+            {% endif %}
+        </p>
+
         <a href="{{ url_for('edit_book', book_id=book._id) }}" class="waves-effect waves-light btn left btn-small yellow darken-2">Edit</a>
 
         <a href="#modal1" class="waves-effect waves-light btn left btn-small yellow darken-2 modal-trigger">Delete</a>
@@ -32,11 +42,9 @@
 
 <div class="row">
     <div class="col s6">
-        <p class="review-text">"{{rev.review}}"</p>
-        
-        <p>- {{rev.username}}</p>
+        <p>{{rev.username}} rated this {{rev.rating}}/5</p>
 
-        <p>{{rev.rating}}/5</p>
+        <p class="review-text">"{{rev.review}}"</p>
     </div>
 </div>
 

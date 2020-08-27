@@ -47,7 +47,7 @@ def genre_list():
 def book_review(book_id):
     rating_list = []
 
-    get_review = mongo.db.review.find()
+    get_review = mongo.db.review.find({"book_id": book_id})
     for i in get_review:
         rating_list.append(int(i['rating']))
 
@@ -59,13 +59,15 @@ def book_review(book_id):
     the_book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
     all_genre = mongo.db.genre.find()
     reviews = mongo.db.review.find({"book_id": book_id})
+    no_of_docs = mongo.db.review.count_documents({"book_id": book_id})
     return render_template(
         'book-review.html',
         book=the_book,
         recent=the_book,
         genre=all_genre,
         review=reviews,
-        average=avg_rating
+        average=avg_rating,
+        review_amount=no_of_docs
     )
 
 
