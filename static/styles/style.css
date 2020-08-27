@@ -69,3 +69,7 @@ a {
 img.responsive-img {
     max-width: 50%
 }
+
+.review-text {
+    white-space: pre-wrap;
+}
