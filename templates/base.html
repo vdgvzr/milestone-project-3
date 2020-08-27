@@ -12,6 +12,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
+    <script>
+        $(document).ready(function() {
+             $('#book_title').keyup(function(event) {
+                $('#book_title').css('textTransform', 'capitalize')
+             });
+             $('#book_author').keyup(function(event) {
+                $('#book_author').css('textTransform', 'capitalize')
+             });
+        });
+    </script>
+
     <title>Pen Hub</title>
 </head>
 <body>
@@ -70,7 +81,7 @@
         </footer>
 
     <script>
-        $(document).ready(function(){
+        $(document).ready(function() {
             $('.carousel').carousel({
                 numVisible: 10
             });
