@@ -17,7 +17,7 @@
         <p>{{book.genre_name}}</p>
 
         <p>{{book.book_blurb}}</p>
-        
+
         <p>Reader rating: {{average}}/5</p>
 
         <p>
@@ -54,7 +54,7 @@
             <div class="input-field col s6">
                 <i class="material-icons prefix">account_circle</i>
 
-                <input id="username" name="username" type="text" class="validate">
+                <input id="username" name="username" type="text" class="validate" required>
 
                 <label for="icon_prefix">Username</label>
             </div>
@@ -64,7 +64,7 @@
             <div class="input-field col s6">
                 <i class="material-icons prefix">create</i>
 
-                <textarea id="review" name="review" class="materialize-textarea"></textarea>
+                <textarea id="review" name="review" class="materialize-textarea" required></textarea>
 
                 <label for="icon_prefix">Write Your Review</label>
             </div>
@@ -73,7 +73,7 @@
         <div class="row">
             <p>
                 <label>
-                    <input name="rating" type="radio" value="1"/>
+                    <input name="rating" type="radio" value="1" required/>
 
                     <span>1</span>
                 </label>
@@ -81,7 +81,7 @@
 
             <p>
                 <label>
-                    <input name="rating" type="radio" value="2"/>
+                    <input name="rating" type="radio" value="2" required/>
                     
                     <span>2</span>
                 </label>
@@ -89,7 +89,7 @@
 
             <p>
                 <label>
-                    <input name="rating" type="radio" value="3"/>
+                    <input name="rating" type="radio" value="3" required/>
                     
                     <span>3</span>
                 </label>
@@ -97,7 +97,7 @@
 
             <p>
                 <label>
-                    <input name="rating" type="radio" value="4"/>
+                    <input name="rating" type="radio" value="4" required/>
                     
                     <span>4</span>
                 </label>
@@ -105,7 +105,7 @@
 
             <p>
                 <label>
-                    <input name="rating" type="radio" value="5"/>
+                    <input name="rating" type="radio" value="5" required/>
                     
                     <span>5</span>
                 </label>

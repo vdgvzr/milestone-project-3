@@ -33,6 +33,11 @@ def add_book():
     return render_template("add-book.html", genre=mongo.db.genre.find())
 
 
+@app.route('/add_genre')
+def add_genre():
+    return render_template("add-genre.html")
+
+
 @app.route('/all_books')
 def all_books():
     return render_template("all-books.html", books=mongo.db.books.find())
@@ -79,6 +84,13 @@ def book_review(book_id):
 def insert_book():
     book = mongo.db.books
     book.insert_one(request.form.to_dict())
+    return redirect(url_for('home'))
+
+
+@app.route('/insert_genre', methods=['POST'])
+def insert_genre():
+    genre = mongo.db.genre
+    genre.insert_one(request.form.to_dict())
     return redirect(url_for('home'))
 
 

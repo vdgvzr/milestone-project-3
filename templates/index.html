@@ -5,7 +5,7 @@
 
 {% block content %}
 
-    <h4 class="">Our top 10 best rated books</h4>
+    <h4 class="">Our 10 best rated books</h4>
 
     <div class="carousel">
         {% for book in books | sort(attribute='rating') | reverse %}
