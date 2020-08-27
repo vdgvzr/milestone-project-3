@@ -4,7 +4,6 @@ from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from decouple import config
 
-
 app = Flask(__name__)
 
 DB_PASSWORD = config('PASSWORD')
@@ -50,9 +49,12 @@ def book_review(book_id):
 
     get_review = mongo.db.review.find()
     for i in get_review:
-        rating_list.append(i['rating'])
+        rating_list.append(int(i['rating']))
 
-    avg_rating = sum(rating_list)/len(rating_list)
+    try:
+        avg_rating = format(sum(rating_list)/len(rating_list), '.2f')
+    except ZeroDivisionError:
+        avg_rating = 0
 
     the_book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
     all_genre = mongo.db.genre.find()
