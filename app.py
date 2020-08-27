@@ -133,6 +133,7 @@ def genre(genre_id):
 @app.route("/search_books")
 def search_books():
     query = request.args.get("search")
+    query = query.title()
     search_value = mongo.db.books.find({
         "$or": [
             {'book_title': {"$regex": query}},
