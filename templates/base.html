@@ -60,7 +60,9 @@
 
     <script>
         $(document).ready(function(){
-            $('.carousel').carousel();
+            $('.carousel').carousel({
+                numVisible: 10
+            });
             $('.slider').slider();
             $('select').formSelect();
             $('.modal').modal();
