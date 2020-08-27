@@ -5,12 +5,12 @@
 
 {% block content %}
 
-    <h4 class="">Pen Hub's top 10</h4>
+    <h4 class="">This week's top 10</h4>
 
     <div class="carousel">
         {% for book in books | sort(attribute='rating') | reverse %}
-            {% if loop.index < 10 %}
-                <a class="carousel-item" href="{{ url_for('book_review', book_id=book._id) }}"><img src="{{ book.image_url }}">{{loop.index}}</a>
+            {% if loop.index < 11 %}
+                <a class="carousel-item" href="{{ url_for('book_review', book_id=book._id) }}"><img src="{{ book.image_url }}"><p class="center">#{{loop.index}}</p></a>
             {% endif %}
         {% endfor %}
     </div>
