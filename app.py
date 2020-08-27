@@ -46,6 +46,14 @@ def genre_list():
 
 @app.route('/book_review/<book_id>', methods=['GET'])
 def book_review(book_id):
+    rating_list = []
+
+    get_review = mongo.db.review.find()
+    for i in get_review:
+        rating_list.append(i['rating'])
+
+    avg_rating = sum(rating_list)/len(rating_list)
+
     the_book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
     all_genre = mongo.db.genre.find()
     reviews = mongo.db.review.find({"book_id": book_id})
@@ -55,6 +63,7 @@ def book_review(book_id):
         recent=the_book,
         genre=all_genre,
         review=reviews,
+        average=avg_rating
     )
 
 
