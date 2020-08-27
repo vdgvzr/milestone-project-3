@@ -60,6 +60,10 @@ def book_review(book_id):
     all_genre = mongo.db.genre.find()
     reviews = mongo.db.review.find({"book_id": book_id})
     no_of_docs = mongo.db.review.count_documents({"book_id": book_id})
+    mongo.db.books.update(
+        {"_id": ObjectId(book_id)},
+        {"$set": {"rating": avg_rating}}
+    )
     return render_template(
         'book-review.html',
         book=the_book,
@@ -96,7 +100,7 @@ def add_review(book_id):
 @app.route('/update_book/<book_id>', methods=['POST'])
 def update_book(book_id):
     books = mongo.db.books
-    books.update({'_id': ObjectId(book_id)},
+    books.update({"_id": ObjectId(book_id)},
                  {
                     'genre_name': request.form.get('genre_name'),
                     'image_url': request.form.get('image_url'),

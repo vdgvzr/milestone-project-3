@@ -25,6 +25,10 @@
 
                         <p class="card-blurb">{{book.book_blurb}}</p>
 
+                        {% if book.rating %}
+                            <p>{{book.rating}}/5</p>
+                        {% endif %}
+
                         <a href="{{ url_for('book_review', book_id=book._id) }}">More..</a>
                     </div>
                 </div>
