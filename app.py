@@ -57,7 +57,7 @@ def book_review(book_id):
         rating_list.append(int(i['rating']))
 
     try:
-        avg_rating = format(sum(rating_list)/len(rating_list), '.2f')
+        avg_rating = format(sum(rating_list)/len(rating_list), '.1f')
     except ZeroDivisionError:
         avg_rating = 0
 
