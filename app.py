@@ -17,6 +17,30 @@ app.config["MONGO_URI"] = 'mongodb+srv://vdgvzr:' +\
 mongo = PyMongo(app)
 
 
+def generateTitleCase(input_string):
+    articles = ['a', 'an', 'the']
+    conjunctions = ['and', 'but', 'for', 'nor', 'or', 'so', 'yet']
+    prepositions = [
+        'in', 'to', 'for', 'with', 'on', 'at',
+        'from', 'by', 'about', 'as', 'into',
+        'like', 'through', 'after', 'over',
+        'between', 'out', 'against', 'during',
+        'without', 'before', 'under', 'around',
+        'among', 'of'
+    ]
+    lower_case = articles + conjunctions + prepositions
+    output_string = ""
+    input_list = input_string.split(" ")
+
+    for word in input_list:
+        if word in lower_case:
+            output_string += word + " "
+        else:
+            temp = word.title()
+            output_string += temp + " "
+    return output_string
+
+
 @app.route('/')
 def home():
     return render_template(
