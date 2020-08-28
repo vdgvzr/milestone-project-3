@@ -45,8 +45,8 @@ def generateTitleCase(input_string):
 def home():
     return render_template(
         "index.html",
-        books=mongo.db.books.find(),
-        recents=mongo.db.books.find(),
+        books=mongo.db.books.find().limit(10),
+        recents=mongo.db.books.find().limit(6),
         quotes=mongo.db.books.find(),
         genre=mongo.db.genre.find()
     )
@@ -106,8 +106,8 @@ def book_review(book_id):
 
 @app.route('/insert_book', methods=['POST'])
 def insert_book():
-    book = mongo.db.books
-    book.insert_one(request.form.to_dict())
+    collection = mongo.db.books
+    collection.insert_one(request.form.to_dict())
     return redirect(url_for('home'))
 
 
