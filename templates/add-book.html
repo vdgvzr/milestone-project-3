@@ -3,82 +3,82 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    <div class="container">
+        <h3 class="center-align">Add Book</h3>
 
-    <h3 class="center-align">Add Book</h3>
+        <div class="row">
+            <form action="{{ url_for('insert_book') }}" method="POST" class="col s12">
+                <div class="row">
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix">title</i>
 
-    <div class="row">
-        <form action="{{ url_for('insert_book') }}" method="POST" class="col s12">
-            <div class="row">
-                <div class="input-field col s6">
-                    <i class="material-icons prefix">title</i>
+                        <input id="book_title" name="book_title" type="text" class="validate" required>
 
-                    <input id="book_title" name="book_title" type="text" class="validate" required>
+                        <label for="icon_prefix">Title</label>
+                    </div>
+                
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix">perm_identity</i>
 
-                    <label for="icon_prefix">Title</label>
+                        <input id="book_author" name="book_author" type="text" class="validate" required>
+
+                        <label for="icon_prefix">Author</label>
+                    </div>
                 </div>
-            
-                <div class="input-field col s6">
-                    <i class="material-icons prefix">perm_identity</i>
 
-                    <input id="book_author" name="book_author" type="text" class="validate" required>
-
-                    <label for="icon_prefix">Author</label>
+                <div class="row">
+                    <div class="input-field col s12">
+                    <i class="material-icons prefix">local_library</i>
+                        <select id="genre_name" name="genre_name" required>
+                        <option value="" disabled selected>Select a Genre</option>
+                        {% for genre in genre %}
+                        <option value="{{genre.genre_name}}">{{genre.genre_name}}</option>
+                        {% endfor %}
+                        </select>
+                        <label>Genre</label>
+                    </div>
                 </div>
-            </div>
 
-            <div class="row">
-                <div class="input-field col s12">
-                <i class="material-icons prefix">local_library</i>
-                    <select id="genre_name" name="genre_name" required>
-                    <option value="" disabled selected>Select a Genre</option>
-                    {% for genre in genre %}
-                    <option value="{{genre.genre_name}}">{{genre.genre_name}}</option>
-                    {% endfor %}
-                    </select>
-                    <label>Genre</label>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">insert_photo</i>
+
+                        <input id="image_url" name="image_url" type="text" class="validate" required>
+
+                        <label for="icon_prefix">Cover Image URL</label>
+                    </div>
                 </div>
-            </div>
+                
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">history_edu</i>
 
-            <div class="row">
-                <div class="input-field col s12">
-                    <i class="material-icons prefix">insert_photo</i>
+                        <textarea id="book_blurb" name="book_blurb" class="materialize-textarea" required></textarea>
 
-                    <input id="image_url" name="image_url" type="text" class="validate" required>
-
-                    <label for="icon_prefix">Cover Image URL</label>
+                        <label for="icon_prefix">Blurb</label>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="row">
-                <div class="input-field col s12">
-                    <i class="material-icons prefix">history_edu</i>
 
-                    <textarea id="book_blurb" name="book_blurb" class="materialize-textarea" required></textarea>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">format_quote</i>
 
-                    <label for="icon_prefix">Blurb</label>
+                        <textarea id="book_quote" name="book_quote" class="materialize-textarea" required></textarea>
+
+                        <label for="icon_prefix">Favourite Quote</label>
+                    </div>
                 </div>
-            </div>
 
-            <div class="row">
-                <div class="input-field col s12">
-                    <i class="material-icons prefix">format_quote</i>
-
-                    <textarea id="book_quote" name="book_quote" class="materialize-textarea" required></textarea>
-
-                    <label for="icon_prefix">Favourite Quote</label>
+                <div class="row" hidden>
+                    <div class="input-field col s12">
+                        <input id="rating" name="rating" type="text" class="validate" value="">
+                    </div>
                 </div>
-            </div>
 
-            <div class="row" hidden>
-                <div class="input-field col s12">
-                    <input id="rating" name="rating" type="text" class="validate" value="">
-                </div>
-            </div>
-
-            <button class="btn waves-effect waves-light" type="submit">Add
-                <i class="material-icons right">playlist_add_check</i>
-            </button>
-        </form>
+                <button class="btn waves-effect waves-light" type="submit">Add
+                    <i class="material-icons right">playlist_add_check</i>
+                </button>
+            </form>
+        </div>
     </div>
-
 {% endblock %}

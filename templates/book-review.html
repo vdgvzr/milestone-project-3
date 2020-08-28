@@ -3,133 +3,133 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-<div class="row">
-    <div class="col s12 m3">
-        <img class="responsive-img" src="{{book.image_url}}">
-    </div>
-
-    <div class="col s12 m9">
-        <h3>{{book.book_title}}</h3>
-
-        <h6>{{book.book_author}}</h6>
-
-        <p>{{book.genre_name}}</p>
-
-        <p>{{book.book_blurb}}</p>
-
-        <p>Reader rating: {{average}}/5</p>
-
-        <p>
-            {{review_amount}}
-
-            {% if review_amount == 1 %}
-                review
-            {% else %}
-                reviews
-            {% endif %}
-        </p>
-
-        <a href="{{ url_for('edit_book', book_id=book._id) }}" class="waves-effect waves-light btn left btn-small yellow darken-2">Edit</a>
-
-        <a href="#modal1" class="waves-effect waves-light btn left btn-small yellow darken-2 modal-trigger">Delete</a>
-    </div>
-</div>
-
-{% for rev in review %}
-
-<div class="row">
-    <div class="col s6">
-        <p>{{rev.username}} rated this {{rev.rating}}/5</p>
-
-        <p class="review-text">"{{rev.review}}"</p>
-    </div>
-</div>
-
-{% endfor %}
-
-<div class="row">
-    <form id="rating-form" action="{{ url_for('add_review', book_id=book._id) }}" method="POST" class="col s12"> 
+    <div class="container">
         <div class="row">
-            <div class="input-field col s6">
-                <i class="material-icons prefix">account_circle</i>
+            <div class="col s12 m3">
+                <img class="responsive-img" src="{{book.image_url}}">
+            </div>
 
-                <input id="username" name="username" type="text" class="validate" required>
+            <div class="col s12 m9">
+                <h3>{{book.book_title}}</h3>
 
-                <label for="icon_prefix">Username</label>
+                <h6>{{book.book_author}}</h6>
+
+                <p>{{book.genre_name}}</p>
+
+                <p>{{book.book_blurb}}</p>
+
+                <p>Reader rating: {{average}}/5</p>
+
+                <p>
+                    {{review_amount}}
+
+                    {% if review_amount == 1 %}
+                        review
+                    {% else %}
+                        reviews
+                    {% endif %}
+                </p>
+
+                <a href="{{ url_for('edit_book', book_id=book._id) }}" class="waves-effect waves-light btn left btn-small yellow darken-2">Edit</a>
+
+                <a href="#modal1" class="waves-effect waves-light btn left btn-small yellow darken-2 modal-trigger">Delete</a>
             </div>
         </div>
 
+        {% for rev in review %}
+
         <div class="row">
-            <div class="input-field col s6">
-                <i class="material-icons prefix">create</i>
+            <div class="col s6">
+                <p>{{rev.username}} rated this {{rev.rating}}/5</p>
 
-                <textarea id="review" name="review" class="materialize-textarea" required></textarea>
-
-                <label for="icon_prefix">Write Your Review</label>
+                <p class="review-text">"{{rev.review}}"</p>
             </div>
         </div>
 
+        {% endfor %}
+
         <div class="row">
-            <p>
-                <label>
-                    <input name="rating" type="radio" value="1" required/>
+            <form id="rating-form" action="{{ url_for('add_review', book_id=book._id) }}" method="POST" class="col s12"> 
+                <div class="row">
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix">account_circle</i>
 
-                    <span>1</span>
-                </label>
-            </p>
+                        <input id="username" name="username" type="text" class="validate" required>
 
-            <p>
-                <label>
-                    <input name="rating" type="radio" value="2" required/>
-                    
-                    <span>2</span>
-                </label>
-            </p>
+                        <label for="icon_prefix">Username</label>
+                    </div>
+                </div>
 
-            <p>
-                <label>
-                    <input name="rating" type="radio" value="3" required/>
-                    
-                    <span>3</span>
-                </label>
-            </p>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix">create</i>
 
-            <p>
-                <label>
-                    <input name="rating" type="radio" value="4" required/>
-                    
-                    <span>4</span>
-                </label>
-            </p>
+                        <textarea id="review" name="review" class="materialize-textarea" required></textarea>
 
-            <p>
-                <label>
-                    <input name="rating" type="radio" value="5" required/>
-                    
-                    <span>5</span>
-                </label>
-            </p>
+                        <label for="icon_prefix">Write Your Review</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <p>
+                        <label>
+                            <input name="rating" type="radio" value="1" required/>
+
+                            <span>1</span>
+                        </label>
+                    </p>
+
+                    <p>
+                        <label>
+                            <input name="rating" type="radio" value="2" required/>
+                            
+                            <span>2</span>
+                        </label>
+                    </p>
+
+                    <p>
+                        <label>
+                            <input name="rating" type="radio" value="3" required/>
+                            
+                            <span>3</span>
+                        </label>
+                    </p>
+
+                    <p>
+                        <label>
+                            <input name="rating" type="radio" value="4" required/>
+                            
+                            <span>4</span>
+                        </label>
+                    </p>
+
+                    <p>
+                        <label>
+                            <input name="rating" type="radio" value="5" required/>
+                            
+                            <span>5</span>
+                        </label>
+                    </p>
+                </div>
+
+                <button class="btn waves-effect waves-light yellow darken-2" type="submit">Add Review
+                    <i class="material-icons right">library_add</i>
+                </button>
+            </form>
         </div>
 
-        <button class="btn waves-effect waves-light yellow darken-2" type="submit">Add Review
-            <i class="material-icons right">library_add</i>
-        </button>
-    </form>
-</div>
+        <div id="modal1" class="modal">
+            <div class="modal-content">
+                <h4>Are you sure you want to delete this book entry?</h4>
+            </div>
 
-<div id="modal1" class="modal">
-    <div class="modal-content">
-        <h4>Are you sure you want to delete this book entry?</h4>
+            <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect waves-green btn-flat left">Cancel</a>
+                
+
+                <a href="{{ url_for('delete_book', book_id=book._id) }}" class="modal-close waves-effect waves-green btn-flat right">Delete</a>
+                
+            </div>
+        </div>
     </div>
-
-    <div class="modal-footer">
-        <a href="#!" class="modal-close waves-effect waves-green btn-flat left">Cancel</a>
-        
-
-        <a href="{{ url_for('delete_book', book_id=book._id) }}" class="modal-close waves-effect waves-green btn-flat right">Delete</a>
-        
-    </div>
-</div>
-
 {% endblock %}

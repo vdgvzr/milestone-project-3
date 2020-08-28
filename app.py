@@ -120,7 +120,8 @@ def update_book(book_id):
                     'book_author': request.form.get('book_author'),
                     'book_isbn': request.form.get('book_isbn'),
                     'book_blurb': request.form.get('book_blurb'),
-                    'book_quote': request.form.get('book_quote')
+                    'book_quote': request.form.get('book_quote'),
+                    'rating': request.form.get('rating')
                  })
     return redirect(url_for('home'))
 

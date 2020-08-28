@@ -5,61 +5,94 @@
 
 {% block content %}
 
-    <h4 class="">Our 10 best rated books</h4>
-
-    <div class="carousel">
-        {% for book in books | sort(attribute='rating') | reverse %}
-            {% if loop.index < 11 %}
-                <a class="carousel-item" href="{{ url_for('book_review', book_id=book._id) }}"><img src="{{ book.image_url }}"><p class="center">#{{loop.index}}</p></a>
-            {% endif %}
-        {% endfor %}
-    </div>
-
-    <h4 class="">Recently Added</h4>
-
-    <div class="carousel">
-        {% for recent in recents %}
-            <a class="carousel-item" href="{{ url_for('book_review', book_id=recent._id) }}"><img src="{{recent.image_url}}"></a>
-        {% endfor %}
-    </div>
-
-    <div class="row">
-        <div class="col s12 m6">
-            <div id="quote-box"></div>
-
-            {% for quote in quotes %}
-                <div class="quote-content">
-                    <p>"{{quote.book_quote}}"</p>
-                    <p> - {{quote.book_author}}</p>
-                </div>
+    <div class="home-header">
+        <div class="carousel">
+            {% for book in books | sort(attribute='rating') | reverse %}
+                {% if loop.index < 11 %}
+                    <a class="carousel-item" href="{{ url_for('book_review', book_id=book._id) }}"><img src="{{ book.image_url }}"></a>
+                {% endif %}
             {% endfor %}
         </div>
     </div>
 
-    <div class="container">
-        <div class="row">
-            <div class="col s12 m6">
-                <h6>Search and browse books</h6>
+    <div class="row center">
+            <div class="col s12">
+                <div id="quote-box"></div>
                 
-                <nav>
-                    <div class="nav-wrapper">
-                        <form action="{{ url_for('search_books') }}">
-                            <div class="input-field">
-                            <input id="search0" type="search" name="search" placeholder="Title / Author" required>
-                            <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                            <i class="material-icons">close</i>
-                            </div>
-                        </form>
+                {% for quote in quotes %}
+                    <div class="quote-content">
+                        <p>"{{quote.book_quote}}"</p>
+                        <p> - {{quote.book_author}}</p>
                     </div>
-                </nav>
+                {% endfor %}
             </div>
         </div>
 
-        <div class="row">
-            <div class="col s12 m6">
-                {% for genre in genre %}
-                    <a class="genre-link" href="{{ url_for('genre', genre_id=genre._id) }}">{{genre.genre_name}}</a>
-                {% endfor %}
+    <div class="container center-cols">
+
+        <h4 class="title">Recently Added</h4>
+
+        <div class="row grey darken-3">
+            {% for recent in recents | reverse %}
+                {% if loop.index < 7 %}
+                    <div class="col s12 m2">
+                        <div class="card" style="overflow: visible;">
+                            <div class="card-image waves-effect waves-block waves-light">
+                                <img class="activator" src="{{recent.image_url}}" alt="book_image">
+                            </div>
+
+                            <div class="card-content">
+                                <p class="card-title grey-text text-darken-4 activator"><a href="">{{recent.book_title}}</a><i class="material-icons right">more_vert</i></p>
+                                <p><a href="#">{{recent.book_author}}</a></p>
+                                <p><a href="#">{{recent.genre_name}}</a></p>
+                            </div>
+
+                            <div class="card-reveal">
+                                <span class="card-title grey-text text-darken-4">{{recent.book_title}}<i class="material-icons right">close</i></span>
+
+                                <p class="card-blurb">{{recent.book_blurb}}</p>
+
+                                {% if recent.rating %}
+                                    <p>{{recent.rating}}/5</p>
+                                {% endif %}
+
+                                <a href="{{ url_for('book_review', book_id=recent._id) }}">More..</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col s12 m12">
+                    <div class="row">
+                        <div class="col s12">
+                            <h6>Search and browse books</h6>
+                            
+                            <nav>
+                                <div class="nav-wrapper">
+                                    <form action="{{ url_for('search_books') }}">
+                                        <div class="input-field">
+                                        <input id="search0" type="search" name="search" placeholder="Title / Author" required>
+                                        <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                                        <i class="material-icons">close</i>
+                                        </div>
+                                    </form>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col s12 genre-box">
+                            {% for genre in genre %}
+                                <a class="genre-link" href="{{ url_for('genre', genre_id=genre._id) }}">{{genre.genre_name}}</a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

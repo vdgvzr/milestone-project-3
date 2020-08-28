@@ -1,4 +1,13 @@
+body {
+    background-color: black;
+    color: lightgray;
+}
 
+.home-header {
+    background-image: linear-gradient(to bottom, transparent, black), url('/static/assets/images/library.jpeg');
+    background-repeat: no-repeat;
+    background-size: 100vw;
+}
 
 nav .brand-logo {
     margin-left: 50px;
@@ -7,6 +16,10 @@ nav .brand-logo {
 nav .hub-logo {
     background-color: goldenrod;
     border-radius: 5px;
+}
+
+.title {
+    color: goldenrod;
 }
 
 nav ul a {
@@ -19,7 +32,19 @@ nav ul a {
 
 .carousel {
     height: 500px;
-    top: -100px;
+}
+
+.carousel .carousel-item {
+    width: 300px;
+    height: 450px;
+    vertical-align: middle;
+}
+
+.carousel .carousel-item img {
+    width: 290px;
+    height: 440px;
+    object-fit: cover;
+    border: 10px solid lightgray;
 }
 
 .center-cols > col {
@@ -36,6 +61,7 @@ nav ul a {
 }
 
 .card {
+    border: 10px solid lightgray;
     display: block;
 }
 
@@ -74,4 +100,13 @@ img.responsive-img {
     white-space: pre-wrap;
     margin-left: 3em;
     margin-right: 3em;
+}
+
+#quote-box {
+    height: 75px;
+}
+
+.genre-box {
+    height: 300px;
+    column-count: 4;
 }

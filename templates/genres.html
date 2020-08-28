@@ -3,19 +3,19 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    <div class="container">
+        <div class="row">
+            <h3 class="">Genres</h3>
 
-<div class="row">
-    <h3 class="">Genres</h3>
+            <div class="row">
+                <div class="col s12 m6">
+                    {% for genre in genre %}
+                        <a class="genre-link" href="{{ url_for('genre', genre_id=genre._id) }}">{{genre.genre_name}}</a>
+                    {% endfor %}
+                </div>
+            </div>
 
-    <div class="row">
-        <div class="col s12 m6">
-            {% for genre in genre %}
-                <a class="genre-link" href="{{ url_for('genre', genre_id=genre._id) }}">{{genre.genre_name}}</a>
-            {% endfor %}
+            <a href="{{ url_for('add_genre') }}" class="waves-effect waves-light btn left btn-small yellow darken-2">Add Genre</a>
         </div>
     </div>
-
-    <a href="{{ url_for('add_genre') }}" class="waves-effect waves-light btn left btn-small yellow darken-2">Add Genre</a>
-
-</div>
 {% endblock %}

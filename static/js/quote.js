@@ -12,7 +12,7 @@ function randomQuote() {
 function change() {
     if (count >= quotes.length) count = 0;
     $("#quote-box").html(quotes[count++]);
-    $("#quote-box").fadeIn("slow").animate({opacity: 0.8}, 10000).fadeOut("slow",
+    $("#quote-box").fadeIn("slow").animate({opacity: 0.8}, 15000).fadeOut("slow",
         function() {
             return change()
         }

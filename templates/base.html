@@ -32,14 +32,14 @@
     
     <div class="navbar-fixed">
         <nav>
-            <div class="nav-wrapper grey darken-1">
+            <div class="nav-wrapper black">
                 <a href="{{ url_for('home') }}" class="brand-logo">Pen <span class="hub-logo">&nbsp;hub&nbsp;</span></a>
 
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li>
                         <form action="{{ url_for('search_books') }}">
                             <div class="input-field">
-                                <input id="search0" type="search" name="search" placeholder="Title / Author" required>
+                                <input id="search0" type="search" name="search" placeholder="Title / Author">
                                 <label class="label-icon" for="search"><i class="material-icons">search</i></label>
                                 <i class="material-icons">close</i>
                             </div>
@@ -53,7 +53,7 @@
         </nav>
     </div>
 
-    <div class="container">
+    <div>
         {% block content %}
         {% endblock %}
     </div>
