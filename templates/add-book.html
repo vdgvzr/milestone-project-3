@@ -29,7 +29,7 @@
                 <div class="row">
                     <div class="input-field col s12">
                     <i class="material-icons prefix">local_library</i>
-                        <select id="genre_name" name="genre_name" required>
+                        <select id="genre_name" name="genre_name" class="validate" required>
                         <option value="" disabled selected>Select a Genre</option>
                         {% for genre in genre %}
                         <option value="{{genre.genre_name}}">{{genre.genre_name}}</option>
@@ -53,7 +53,7 @@
                     <div class="input-field col s12">
                         <i class="material-icons prefix">history_edu</i>
 
-                        <textarea id="book_blurb" name="book_blurb" class="materialize-textarea" required></textarea>
+                        <textarea id="book_blurb" name="book_blurb" class="materialize-textarea validate" required></textarea>
 
                         <label for="icon_prefix">Blurb</label>
                     </div>
@@ -63,7 +63,7 @@
                     <div class="input-field col s12">
                         <i class="material-icons prefix">format_quote</i>
 
-                        <textarea id="book_quote" name="book_quote" class="materialize-textarea" required></textarea>
+                        <textarea id="book_quote" name="book_quote" class="materialize-textarea validate" required></textarea>
 
                         <label for="icon_prefix">Favourite Quote</label>
                     </div>

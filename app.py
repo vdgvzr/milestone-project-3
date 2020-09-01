@@ -3,6 +3,7 @@ from flask import Flask, render_template, redirect, request, url_for
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from decouple import config
+from datetime import datetime
 
 app = Flask(__name__)
 
@@ -106,8 +107,18 @@ def book_review(book_id):
 
 @app.route('/insert_book', methods=['POST'])
 def insert_book():
-    collection = mongo.db.books
-    collection.insert_one(request.form.to_dict())
+    book = {
+        'genre_name': request.form.get('genre_name'),
+        'image_url': request.form.get('image_url'),
+        'book_title': request.form.get('book_title'),
+        'book_author': request.form.get('book_author'),
+        'book_isbn': request.form.get('book_isbn'),
+        'book_blurb': request.form.get('book_blurb'),
+        'book_quote': request.form.get('book_quote'),
+        'rating': request.form.get('rating'),
+        'created_at': datetime.utcnow().strftime('%b %d %Y')
+    }
+    mongo.db.books.insert_one(book)
     return redirect(url_for('home'))
 
 
