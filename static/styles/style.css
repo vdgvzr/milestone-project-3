@@ -12,6 +12,10 @@ body {
     text-transform: capitalize;
 }
 
+.flashes {
+    line-height: 2;
+}
+
 .home-header {
     background-image: linear-gradient(to bottom, transparent, black), url('/static/assets/images/library.jpeg');
     background-repeat: no-repeat;

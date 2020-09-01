@@ -13,7 +13,7 @@
                         <div class="input-field col s12">
                             <i class="material-icons prefix">account_circle</i>
 
-                            <input id="username" name="username" type="text" class="validate" required>
+                            <input id="username" name="username" type="text" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
 
                             <label for="username">Username</label>
                         </div>
@@ -23,7 +23,7 @@
                         <div class="input-field col s12">
                             <i class="material-icons prefix">lock</i>
 
-                            <input id="password" name="password" type="text" class="validate" required>
+                            <input id="password" name="password" type="text" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
 
                             <label for="password">Password</label>
                         </div>
