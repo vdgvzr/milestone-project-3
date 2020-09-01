@@ -12,7 +12,7 @@
                     <div class="input-field col s6">
                         <i class="material-icons prefix">title</i>
 
-                        <input id="book_title" name="book_title" type="text" class="validate" value="{{book.book_title}}">
+                        <input id="book_title" name="book_title" type="text" class="validate" value="{{book.book_title}}" required>
 
                         <label for="icon_prefix">Title</label>
                     </div>
@@ -20,7 +20,7 @@
                     <div class="input-field col s6">
                         <i class="material-icons prefix">perm_identity</i>
 
-                        <input id="book_author" name="book_author" type="text" class="validate" value="{{book.book_author}}">
+                        <input id="book_author" name="book_author" type="text" class="validate" value="{{book.book_author}}" required>
 
                         <label for="icon_prefix">Author</label>
                     </div>
@@ -29,7 +29,7 @@
                 <div class="row">
                     <div class="input-field col s12">
                     <i class="material-icons prefix">local_library</i>
-                        <select id="genre_name" name="genre_name">
+                        <select id="genre_name" name="genre_name" required>
                         <option value="" disabled selected>Select a Genre</option>
                         {% for genre in genre %}
                             {% if genre.genre_name == book.genre_name %}
@@ -47,7 +47,7 @@
                     <div class="input-field col s12">
                         <i class="material-icons prefix">insert_photo</i>
 
-                        <input id="image_url" name="image_url" type="text" class="validate" value="{{book.image_url}}">
+                        <input id="image_url" name="image_url" type="text" class="validate" value="{{book.image_url}}" required>
 
                         <label for="icon_prefix">Cover Image URL</label>
                     </div>
@@ -57,7 +57,7 @@
                     <div class="input-field col s12">
                         <i class="material-icons prefix">history_edu</i>
 
-                        <textarea id="book_blurb" name="book_blurb" class="materialize-textarea">{{book.book_blurb}}</textarea>
+                        <textarea id="book_blurb" name="book_blurb" class="materialize-textarea" required>{{book.book_blurb}}</textarea>
 
                         <label for="icon_prefix">Blurb</label>
                     </div>
@@ -87,7 +87,7 @@
                     <i class="material-icons right">save</i>
                 </button>         
 
-                <button href="{{ url_for('home') }}" class="btn waves-effect waves-light red right">Cancel
+                <button href="{{ url_for('home') }}" class="btn waves-effect waves-light red right" formnovalidate>Cancel
                     <i class="material-icons right">cancel</i>
                 </button>   
             </form>
