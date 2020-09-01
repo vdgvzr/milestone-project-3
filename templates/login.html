@@ -4,10 +4,10 @@
 
 {% block content %}
     <div class="container">
-        <h4 class="title center-align">Register</h4>
+        <h4 class="title center-align">Log In</h4>
 
         <div class="row">
-            <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('register') }}">
+            <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('login') }}">
                 <div class="card-panel black">
                     <div class="row">
                         <div class="input-field col s12">
@@ -30,7 +30,7 @@
                     </div>
 
                     <div class="row">
-                        <button class="btn waves-effect waves-light btn-gold" type="submit">Register
+                        <button class="btn waves-effect waves-light btn-gold" type="submit">Log In
                             <i class="material-icons right">menu_book</i>
                         </button>
                     </div>
@@ -40,7 +40,7 @@
 
         <div class="row">
             <div class="col s12">
-                <p class="center-align">Already Registered? <a href="{{ url_for('login') }}">Log In</a></p>
+                <p class="center-align">Not yet registered? <a href="{{ url_for('register') }}">Register Account</a></p>
             </div>
         </div>
     </div>

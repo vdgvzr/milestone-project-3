@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, redirect, request, url_for
+from flask import Flask, render_template, redirect, request, url_for, session, flash
 from flask_paginate import Pagination, get_page_args
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
@@ -10,12 +10,14 @@ from werkzeug.security import generate_password_hash, check_password_hash
 app = Flask(__name__)
 
 DB_PASSWORD = config('PASSWORD')
+SECRET_KEY = config('SECRET_KEY')
 
 app.config["MONGO_DBNAME"] = 'pen_hub'
 app.config["MONGO_URI"] = 'mongodb+srv://vdgvzr:' +\
                            DB_PASSWORD +\
                           '@myfirstcluster.iop5x.mongodb.net/'\
                           'pen_hub?retryWrites=true&w=majority'
+app.secret_key = SECRET_KEY
 
 mongo = PyMongo(app)
 
@@ -33,7 +35,48 @@ def home():
 
 @app.route('/register', methods=["GET", "POST"])
 def register():
+    if request.method == "POST":
+        existing_user = mongo.db.users.find_one(
+            {"username": request.form.get("username").lower()}
+        )
+
+        if existing_user:
+            flash("Username already exists")
+            return redirect(url_for("register"))
+
+        register = {
+            "username": request.form.get("username").lower(),
+            "password": generate_password_hash(request.form.get("password"))
+        }
+        mongo.db.users.insert_one(register)
+
+        session["user"] = request.form.get("username").lower()
+        flash("Registration Successful!")
     return render_template("register.html")
+
+
+@app.route('/login', methods=["GET", "POST"])
+def login():
+    if request.method == "POST":
+        existing_user = mongo.db.users.find_one(
+            {"username": request.form.get("username").lower()}
+        )
+
+        if existing_user:
+            if check_password_hash(
+                existing_user["password"],
+                request.form.get("password")
+            ):
+                session["user"] = request.form.get("username").lower()
+                flash("Welcome, {}".format(request.form.get("username")))
+            else:
+                flash("Incorrect Username and/or Password")
+                return redirect(url_for("login"))
+
+        else:
+            flash("Incorrect Username and/or Password")
+            return redirect(url_for("login"))
+    return render_template("login.html")
 
 
 @app.route('/add_book')
