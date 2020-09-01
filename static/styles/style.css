@@ -118,6 +118,10 @@ a {
     margin-right: 3em;
 }
 
+.review-date {
+    font-style: italic;
+}
+
 #quote-box {
     height: 75px;
     font-size: 1.1em;
@@ -165,3 +169,4 @@ a {
 .input-field .prefix.active {
     color: goldenrod;
 }
+

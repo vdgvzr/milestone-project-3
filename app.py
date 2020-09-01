@@ -138,7 +138,12 @@ def edit_book(book_id):
 
 @app.route('/add_review/<book_id>', methods=['POST'])
 def add_review(book_id):
-    review_object = request.form.to_dict()
+    review_object = {
+        'username': request.form.get('username'),
+        'review': request.form.get('review'),
+        'rating': request.form.get('rating'),
+        'created_at': datetime.utcnow().strftime('%b %d %Y')
+    }
     review_object['book_id'] = book_id
     mongo.db.review.insert_one(review_object)
     return redirect(url_for('book_review', book_id=book_id))
@@ -156,7 +161,8 @@ def update_book(book_id):
                     'book_isbn': request.form.get('book_isbn'),
                     'book_blurb': request.form.get('book_blurb'),
                     'book_quote': request.form.get('book_quote'),
-                    'rating': request.form.get('rating')
+                    'rating': request.form.get('rating'),
+                    'created_at': datetime.utcnow().strftime('%b %d %Y')
                  })
     return redirect(url_for('home'))
 
