@@ -1,5 +1,6 @@
 import os
 from flask import Flask, render_template, redirect, request, url_for
+from flask_paginate import Pagination, get_page_args
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from decouple import config
@@ -36,7 +37,32 @@ def add_book():
 
 @app.route('/all_books')
 def all_books():
-    return render_template("all-books.html", books=mongo.db.books.find())
+    page, per_page, offset = get_page_args(
+        page_parameter='page',
+        per_page_parameter='per_page'
+    )
+
+    per_page = 6
+    offset = page * per_page
+
+    total = mongo.db.books.find().count()
+
+    books = mongo.db.books.find()
+    paginated_books = books[offset: offset + per_page]
+
+    pagination = Pagination(
+        page=page,
+        per_page=per_page,
+        total=total,
+        css_framework='materialize'
+    )
+    return render_template(
+        "all-books.html",
+        books=paginated_books,
+        page=page,
+        per_page=per_page,
+        pagination=pagination
+    )
 
 
 @app.route('/genre_list')
@@ -137,12 +163,34 @@ def delete_book(book_id):
 
 @app.route('/genre/<genre_id>')
 def genre(genre_id):
+    page, per_page, offset = get_page_args(
+        page_parameter='page',
+        per_page_parameter='per_page'
+    )
+
+    per_page = 6
+    offset = page * per_page
+
+    total = mongo.db.books.find().count()
+
+    books = mongo.db.books.find()
+    paginated_books = books[offset: offset + per_page]
+
+    pagination = Pagination(
+        page=page,
+        per_page=per_page,
+        total=total,
+        css_framework='materialize'
+    )
+
     the_genre = mongo.db.genre.find_one({"_id": ObjectId(genre_id)})
-    all_books = mongo.db.books.find()
     return render_template(
         'genre.html',
         genre=the_genre,
-        books=all_books,
+        books=paginated_books,
+        page=page,
+        per_page=per_page,
+        pagination=pagination
     )
 
 
