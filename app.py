@@ -5,6 +5,7 @@ from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from decouple import config
 from datetime import datetime
+from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
 
@@ -28,6 +29,11 @@ def home():
         quotes=mongo.db.books.find(),
         genre=mongo.db.genre.find()
     )
+
+
+@app.route('/register', methods=["GET", "POST"])
+def register():
+    return render_template("register.html")
 
 
 @app.route('/add_book')

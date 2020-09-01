@@ -6,7 +6,7 @@
 {% block content %}
 
     <div class="home-header">
-        <div class="carousel">
+        <div class="carousel  hide-on-med-and-down">
             {% for book in books | sort(attribute='rating') | reverse %}
                 <a class="carousel-item" href="{{ url_for('book_review', book_id=book._id) }}"><img src="{{ book.image_url }}"></a>
             {% endfor %}
