@@ -83,7 +83,11 @@ def login():
 def profile(username):
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
-    return render_template("profile.html", username=username)
+
+    if session["user"]:
+        return render_template("profile.html", username=username)
+
+    return redirect(url_for("login"))
 
 
 @app.route('/add_book')
@@ -274,6 +278,13 @@ def search_books():
         query=query,
         no_of_docs=no_of_docs,
     )
+
+
+@app.route('/logout')
+def logout():
+    flash("You have been logged out")
+    session.pop("user")
+    return redirect(url_for("login"))
 
 
 if __name__ == '__main__':
