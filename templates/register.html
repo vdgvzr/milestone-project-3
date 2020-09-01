@@ -4,10 +4,36 @@
 
 {% block content %}
     <div class="container">
+        <h4 class="title center-align">Register</h4>
+
         <div class="row">
-            <form class="col s12 m8 offset-m2">
-                <div class="card-panel grey darken-4">
-                    <span class="white-text">Test</span>
+            <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('register') }}">
+                <div class="card-panel black">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">account_circle</i>
+
+                            <input id="username" name="username" type="text" class="validate" required>
+
+                            <label for="username">Username</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">lock</i>
+
+                            <input id="password" name="password" type="text" class="validate" required>
+
+                            <label for="password">Password</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <button class="btn waves-effect waves-light btn-gold" type="submit">Register
+                            <i class="material-icons right">menu_book</i>
+                        </button>
+                    </div>
                 </div>
             </form>
         </div>
