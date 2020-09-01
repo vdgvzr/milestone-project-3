@@ -18,36 +18,12 @@ app.config["MONGO_URI"] = 'mongodb+srv://vdgvzr:' +\
 mongo = PyMongo(app)
 
 
-def generateTitleCase(input_string):
-    articles = ['a', 'an', 'the']
-    conjunctions = ['and', 'but', 'for', 'nor', 'or', 'so', 'yet']
-    prepositions = [
-        'in', 'to', 'for', 'with', 'on', 'at',
-        'from', 'by', 'about', 'as', 'into',
-        'like', 'through', 'after', 'over',
-        'between', 'out', 'against', 'during',
-        'without', 'before', 'under', 'around',
-        'among', 'of'
-    ]
-    lower_case = articles + conjunctions + prepositions
-    output_string = ""
-    input_list = input_string.split(" ")
-
-    for word in input_list:
-        if word in lower_case:
-            output_string += word + " "
-        else:
-            temp = word.title()
-            output_string += temp + " "
-    return output_string
-
-
 @app.route('/')
 def home():
     return render_template(
         "index.html",
         books=mongo.db.books.find().limit(10),
-        recents=mongo.db.books.find().limit(6),
+        recents=mongo.db.books.find(),
         quotes=mongo.db.books.find(),
         genre=mongo.db.genre.find()
     )
@@ -56,11 +32,6 @@ def home():
 @app.route('/add_book')
 def add_book():
     return render_template("add-book.html", genre=mongo.db.genre.find())
-
-
-@app.route('/add_genre')
-def add_genre():
-    return render_template("add-genre.html")
 
 
 @app.route('/all_books')
@@ -112,20 +83,12 @@ def insert_book():
         'image_url': request.form.get('image_url'),
         'book_title': request.form.get('book_title'),
         'book_author': request.form.get('book_author'),
-        'book_isbn': request.form.get('book_isbn'),
         'book_blurb': request.form.get('book_blurb'),
         'book_quote': request.form.get('book_quote'),
         'rating': request.form.get('rating'),
-        'created_at': datetime.utcnow().strftime('%b %d %Y')
+        'created_at': datetime.utcnow()
     }
     mongo.db.books.insert_one(book)
-    return redirect(url_for('home'))
-
-
-@app.route('/insert_genre', methods=['POST'])
-def insert_genre():
-    genre = mongo.db.genre
-    genre.insert_one(request.form.to_dict())
     return redirect(url_for('home'))
 
 
@@ -158,11 +121,10 @@ def update_book(book_id):
                     'image_url': request.form.get('image_url'),
                     'book_title': request.form.get('book_title'),
                     'book_author': request.form.get('book_author'),
-                    'book_isbn': request.form.get('book_isbn'),
                     'book_blurb': request.form.get('book_blurb'),
                     'book_quote': request.form.get('book_quote'),
                     'rating': request.form.get('rating'),
-                    'created_at': datetime.utcnow().strftime('%b %d %Y')
+                    'created_at': datetime.utcnow()
                  })
     return redirect(url_for('home'))
 

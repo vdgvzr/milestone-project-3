@@ -8,6 +8,10 @@ body {
     color: lightgray;
 }
 
+.capitalize {
+    text-transform: capitalize;
+}
+
 .home-header {
     background-image: linear-gradient(to bottom, transparent, black), url('/static/assets/images/library.jpeg');
     background-repeat: no-repeat;

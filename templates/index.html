@@ -41,32 +41,34 @@
 
         <div class="row grey darken-4">
             {% for recent in recents | reverse %}
-                <div class="col s12 m2">
-                    <div class="card grey darken-3" style="overflow: visible;">
-                        <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="{{recent.image_url}}" alt="book_image">
-                        </div>
-
-                        <div class="card-content">
-                            <div style="height: 20px;">
-                                {% if recent.rating %}
-                                    <p><i class="material-icons card-star">star_rate</i> {{recent.rating}}</p>
-                                {% else %}
-                                    <p>(No reviews yet)</p>
-                                {% endif %}
+                {% if loop.index < 7 %}
+                    <div class="col s12 m2">
+                        <div class="card grey darken-3" style="overflow: visible;">
+                            <div class="card-image waves-effect waves-block waves-light">
+                                <img class="activator" src="{{recent.image_url}}" alt="book_image">
                             </div>
-                            <p class="card-title white-text text-darken-4 activator">{{recent.book_title}}</p>
-                        </div>
 
-                        <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4">{{recent.book_title}}<i class="material-icons right">close</i></span>
+                            <div class="card-content">
+                                <div style="height: 20px;">
+                                    {% if recent.rating %}
+                                        <p><i class="material-icons card-star">star_rate</i> {{recent.rating}}</p>
+                                    {% else %}
+                                        <p>(No reviews yet)</p>
+                                    {% endif %}
+                                </div>
+                                <p class="card-title white-text text-darken-4 activator capitalize">{{recent.book_title}}</p>
+                            </div>
 
-                            <p class="card-blurb">{{recent.book_blurb}}</p>
+                            <div class="card-reveal">
+                                <span class="card-title grey-text text-darken-4 capitalize">{{recent.book_title}}<i class="material-icons right">close</i></span>
 
-                            <a href="{{ url_for('book_review', book_id=recent._id) }}">More..</a>
+                                <p class="card-blurb">{{recent.book_blurb}}</p>
+
+                                <a href="{{ url_for('book_review', book_id=recent._id) }}">More..</a>
+                            </div>
                         </div>
                     </div>
-                </div>
+                {% endif %}
             {% endfor %}
         </div>
 
