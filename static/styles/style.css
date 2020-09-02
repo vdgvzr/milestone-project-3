@@ -238,3 +238,7 @@ nav ul a:hover {
     background-color: goldenrod;
 }
 
+[type="checkbox"].filled-in:checked+span:not(.lever):after {
+    border: 2px solid goldenrod;
+    background-color: goldenrod;
+}
