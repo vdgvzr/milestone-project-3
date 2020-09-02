@@ -57,7 +57,11 @@ nav ul a {
     width: 290px;
     height: 440px;
     object-fit: cover;
-    border: 10px solid lightgray;
+    border: 10px solid #212121;
+}
+
+.quote-row {
+    margin-top: 50px;
 }
 
 .center-cols > col {

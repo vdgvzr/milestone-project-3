@@ -23,7 +23,9 @@ def home():
         books=mongo.db.books.find().limit(10),
         recents=mongo.db.books.find(),
         quotes=mongo.db.books.find(),
-        genre=mongo.db.genre.find()
+        genre=mongo.db.genre.find(),
+        username=mongo.db.users.find_one(
+            {"username": session["user"]})["username"]
     )
 
 
