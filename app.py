@@ -23,9 +23,7 @@ def home():
         books=mongo.db.books.find().limit(10),
         recents=mongo.db.books.find(),
         quotes=mongo.db.books.find(),
-        genre=mongo.db.genre.find(),
-        username=mongo.db.users.find_one(
-            {"username": session["user"]})["username"]
+        genre=mongo.db.genre.find()
     )
 
 
@@ -50,6 +48,12 @@ def register():
         return redirect(url_for("profile", username=session["user"]))
 
     return render_template("register.html")
+
+
+@app.route('/delete_account')
+def delete_account():
+    mongo.db.users.remove()
+    return redirect(url_for('home'))
 
 
 @app.route('/login', methods=["GET", "POST"])
@@ -178,6 +182,27 @@ def edit_book(book_id):
     return render_template('edit-book.html', book=the_book, genre=all_genre)
 
 
+@app.route('/edit_review/<book_id>/<review_id>')
+def edit_review(book_id, review_id):
+    review = mongo.db.review.find_one({"_id": ObjectId(review_id)})
+    return render_template('edit-review.html', review=review)
+
+
+@app.route('/update_review/<review_id>/<book_id>', methods=['POST'])
+def update_review(review_id, book_id):
+    reviews = mongo.db.review
+    reviews.update(
+        {"_id": ObjectId(review_id)},
+        {
+            'username': request.form.get('username'),
+            'review': request.form.get('review'),
+            'rating': request.form.get('rating'),
+            'created_at': datetime.utcnow().strftime('%b %d %Y'),
+            'book_id': book_id
+        })
+    return redirect(url_for('book_review', book_id=book_id))
+
+
 @app.route('/add_review/<book_id>', methods=['POST'])
 def add_review(book_id):
     review_object = {
@@ -212,6 +237,12 @@ def update_book(book_id):
 def delete_book(book_id):
     mongo.db.books.remove({'_id': ObjectId(book_id)})
     return redirect(url_for('home'))
+
+
+@app.route('/delete_review/<review_id>')
+def delete_review(review_id):
+    mongo.db.review.remove({'_id': ObjectId(review_id)})
+    return redirect(url_for('book_review'))
 
 
 @app.route('/genre/<genre_id>')

@@ -35,7 +35,7 @@
                     <li><a href="{{ url_for('all_books') }}">All Books</a></li>
                     <li><a href="{{ url_for('genre_list') }}">Genre List</a></li>
                     {% if session.user %}
-                        <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">{{username}}<i class="material-icons right">arrow_drop_down</i></a></li>
+                        <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">{{session.user}}<i class="material-icons right">arrow_drop_down</i></a></li>
                     {% else %}
                         <li><a href="{{ url_for('login') }}">Log In</a></li>
                         <li><a href="{{ url_for('register') }}">Register</a></li>
