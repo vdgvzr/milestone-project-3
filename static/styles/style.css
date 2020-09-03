@@ -120,18 +120,12 @@ a {
 }
 
 .genre-link {
+    font-size: 0.9rem;
     display: block;
 }
 
 .quote-content {
     display: none;
-}
-
-.card-blurb {
-    font-size: 0.8vw;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
 }
 
 .review-text {

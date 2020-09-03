@@ -28,7 +28,7 @@
 
         <nav class="nav-extended">
             <div class="nav-wrapper black">
-                <a href="{{ url_for('home') }}" class="brand-logo">Pen <span class="hub-logo">&nbsp;hub&nbsp;</span></a>
+                <a href="{{ url_for('home') }}" class="brand-logo left">Pen <span class="hub-logo">&nbsp;hub&nbsp;</span></a>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
                 <ul class="right hide-on-med-and-down">
                     <li><a href="{{ url_for('home') }}">Home</a></li>
@@ -45,7 +45,6 @@
         </nav>
 
         <ul class="sidenav" id="mobile-demo">
-            <li><h4 class="center-align yellow-text text-darken-1">Pen Hub</h4></li>
             <li><a href="{{ url_for('home') }}">Home</a></li>
             <li><a href="{{ url_for('all_books') }}">All Books</a></li>
             <li><a href="{{ url_for('genre_list') }}">Genre List</a></li>

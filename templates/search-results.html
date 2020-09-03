@@ -16,13 +16,15 @@
 
                 <br>
 
-                <a href="{{ url_for('add_book') }}">Can't find what you're looking for? Add your book here!</a>
+                {% if session.user %}
+                    <a href="{{ url_for('add_book') }}">Can't find what you're looking for? Add your book here!</a>
+                {% endif %}
             </div>
         {% endif %}
 
         <div class="row grey darken-4">
             {% for book in search|sort(attribute="book_title") %}
-                <div class="col s12 m2">
+                <div class="col s8 offset-s2 m4 l2">
                     <div class="card grey darken-3" style="overflow: visible;">
                         <div class="card-image waves-effect waves-block waves-light">
                             <img class="activator" src="{{book.image_url}}" alt="book_image">
@@ -39,8 +41,8 @@
                             <p class="card-title white-text text-darken-4 activator capitalize">{{book.book_title}}</p>
                         </div>
 
-                        <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4 capitalize">{{book.book_title}}<i class="material-icons right">close</i></span>
+                        <div class="card-reveal grey darken-3">
+                            <span class="card-title title capitalize">{{book.book_title}}<i class="material-icons right">close</i></span>
 
                             <p class="card-blurb">{{book.book_blurb}}</p>
 
