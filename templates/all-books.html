@@ -40,5 +40,19 @@
         <div class="center">
             {{pagination.links}}
         </div>
+        
+        <div class="row">
+            <nav>
+                <div class="nav-wrapper grey darken-4">
+                    <form action="{{ url_for('search_books') }}">
+                        <div class="input-field">
+                        <input id="search0" type="search" name="search" placeholder="Title / Author" required>
+                        <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                        <i class="material-icons">close</i>
+                        </div>
+                    </form>
+                </div>
+            </nav>
+        </div>
     </div>
 {% endblock %}
