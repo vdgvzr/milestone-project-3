@@ -84,6 +84,7 @@ nav ul a {
     line-height: 24px;
     margin: 5px 5px;
     padding: 0 0.5em;
+    color: black;
 }
 
 .card {
@@ -254,4 +255,21 @@ nav ul a:hover {
 [type="checkbox"].filled-in:checked+span:not(.lever):after {
     border: 2px solid goldenrod;
     background-color: goldenrod;
+}
+
+.review-image {
+    border: 10px solid gray;
+}
+
+.book-review-box {
+    padding: 10px;
+}
+
+.review-user {
+    color: goldenrod;
+    font-size: 20px;
+}
+
+.rating-button {
+    display: inline;
 }
