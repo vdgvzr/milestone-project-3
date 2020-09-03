@@ -40,6 +40,10 @@ nav ul a {
     margin-right: 50px;
 }
 
+.dropdown-link:hover {
+    background-color: #eee;
+}
+
 .container {
     margin-top: 50px;
 }

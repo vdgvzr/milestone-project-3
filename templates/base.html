@@ -21,9 +21,9 @@
 
     <header class="navbar-fixed">
         <ul id="dropdown1" class="dropdown-content">
-            <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
-            <li><a href="{{ url_for('add_book') }}">Add Book</a></li>
-            <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+            <li><a class="dropdown-link" href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
+            <li><a class="dropdown-link" href="{{ url_for('add_book') }}">Add Book</a></li>
+            <li><a class="dropdown-link" href="{{ url_for('logout') }}">Log Out</a></li>
         </ul>
 
         <nav class="nav-extended">
@@ -104,10 +104,7 @@
 
     <script>
         $(document).ready(function() {
-            $(".dropdown-trigger").dropdown({
-                hover: true
-            }
-            );
+            $(".dropdown-trigger").dropdown();
             $('.sidenav').sidenav({
                 edge: "right"
             });
