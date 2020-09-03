@@ -4,7 +4,7 @@
 
 {% block content %}
     <div class="container">
-        <h3 class="center-align">Edit Book</h3>
+        <h3 class="center-align title">Edit Book</h3>
 
         <div class="row">
             <form action="{{ url_for('update_book', book_id=book._id) }}" method="POST" class="col s12">
@@ -57,7 +57,7 @@
                     <div class="input-field col s12">
                         <i class="material-icons prefix">history_edu</i>
 
-                        <textarea id="book_blurb" name="book_blurb" class="materialize-textarea" required>{{book.book_blurb}}</textarea>
+                        <textarea id="book_blurb" name="book_blurb" class="materialize-textarea validate" required>{{book.book_blurb}}</textarea>
 
                         <label for="book_blurb">Blurb</label>
                     </div>
@@ -67,7 +67,7 @@
                     <div class="input-field col s12">
                         <i class="material-icons prefix">format_quote</i>
 
-                        <textarea id="book_quote" name="book_quote" class="materialize-textarea">{{book.book_quote}}</textarea>
+                        <textarea id="book_quote" name="book_quote" class="materialize-textarea validate">{{book.book_quote}}</textarea>
 
                         <label for="book_quote">Favourite Quote</label>
                     </div>
