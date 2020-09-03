@@ -138,7 +138,7 @@ def book_review(book_id):
     try:
         avg_rating = format(sum(rating_list)/len(rating_list), '.1f')
     except ZeroDivisionError:
-        avg_rating = 0
+        avg_rating = "0"
 
     the_book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
     all_genre = mongo.db.genre.find()
@@ -239,10 +239,10 @@ def delete_book(book_id):
     return redirect(url_for('home'))
 
 
-@app.route('/delete_review/<review_id>')
-def delete_review(review_id):
+@app.route('/delete_review/<book_id>/<review_id>')
+def delete_review(book_id, review_id):
     mongo.db.review.remove({'_id': ObjectId(review_id)})
-    return redirect(url_for('book_review'))
+    return redirect(url_for('book_review', book_id=book_id))
 
 
 @app.route('/genre/<genre_id>')
