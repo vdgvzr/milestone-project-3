@@ -50,10 +50,11 @@ def register():
     return render_template("register.html")
 
 
-@app.route('/delete_account')
-def delete_account():
-    mongo.db.users.remove()
-    return redirect(url_for('home'))
+@app.route('/delete_account/<username>')
+def delete_account(username):
+    mongo.db.users.remove({"username": username})
+    flash("Your account has been deleted")
+    return redirect(url_for('logout'))
 
 
 @app.route('/login', methods=["GET", "POST"])
