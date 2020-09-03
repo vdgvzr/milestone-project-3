@@ -21,7 +21,7 @@ def home():
     return render_template(
         "index.html",
         books=mongo.db.books.find().limit(10),
-        recents=mongo.db.books.find(),
+        recents=mongo.db.books.find().sort("_id", -1).limit(6),
         quotes=mongo.db.books.find(),
         genre=mongo.db.genre.find()
     )
