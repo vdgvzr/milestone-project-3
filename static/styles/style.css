@@ -33,6 +33,7 @@ nav .hub-logo {
 
 .title {
     color: goldenrod;
+    margin-top: 10px;
 }
 
 nav ul a {
@@ -45,6 +46,10 @@ nav ul a {
 
 .carousel {
     height: 500px;
+}
+
+.carousel .indicators {
+    bottom: -25px;
 }
 
 .carousel .carousel-item {

@@ -74,9 +74,9 @@
         </div>
 
         <div class="row">
-            <div class="col s12 m12">
+            <div class="col s12 m6">
                 <div class="row">
-                    <div class="col s12">
+                    <div class="col s12 m12">
                         <h4 class="title">Search and browse books</h4>
                         
                         <nav>
@@ -94,10 +94,26 @@
                 </div>
 
                 <div class="row">
-                    <div class="col s12 m6 genre-box">
+                    <div class="col s12 m12 genre-box">
                         {% for genre in genre %}
                             <a class="genre-link" href="{{ url_for('genre', genre_id=genre._id) }}">{{genre.genre_name}}</a>
                         {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="col s12 m6">
+                <div class="card blue-grey">
+                    <div class="card-content white-text">
+                        <p>Welcome to pen hub!</p>
+                        <br>
+                        <p>Whether you just want to see what other people are saying about your favorite book, 
+                        or find the next best pick to buy, you've come to the right place!</p>
+                        <br>
+                        <p>Sign up now to add your favourite books and leave your own thoughts for other users!</p>
+                    </div>
+                    <div class="card-action">
+                        <a href="{{ url_for('register') }}">Register here!</a>
                     </div>
                 </div>
             </div>
