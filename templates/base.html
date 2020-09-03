@@ -1,123 +1,145 @@
 <!DOCTYPE html>
+
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}" type="text/css"/>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}" type="text/css"/>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
-    <script src="{{ url_for('static', filename='js/title.js') }}" type="text/javascript"></script>
-    <script src="{{ url_for('static', filename='js/password.js') }}" type="text/javascript"></script>
+        <script src="{{ url_for('static', filename='js/title.js') }}" type="text/javascript"></script>
+        <script src="{{ url_for('static', filename='js/password.js') }}" type="text/javascript"></script>
 
-    <title>Pen Hub</title>
-</head>
-<body>
+        <title>Pen Hub</title>
+    </head>
 
-    <header class="navbar-fixed">
-        <ul id="dropdown1" class="dropdown-content">
-            <li><a class="dropdown-link" href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
-            <li><a class="dropdown-link" href="{{ url_for('add_book') }}">Add Book</a></li>
-            <li><a class="dropdown-link" href="{{ url_for('logout') }}">Log Out</a></li>
-        </ul>
+    <body>
+        <header class="navbar-fixed">
+            <ul id="dropdown1" class="dropdown-content">
+                <li><a class="dropdown-link" href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
 
-        <nav class="nav-extended">
-            <div class="nav-wrapper black">
-                <a href="{{ url_for('home') }}" class="brand-logo left">Pen <span class="hub-logo">&nbsp;hub&nbsp;</span></a>
-                <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
-                <ul class="right hide-on-med-and-down">
-                    <li><a href="{{ url_for('home') }}">Home</a></li>
-                    <li><a href="{{ url_for('all_books') }}">All Books</a></li>
-                    <li><a href="{{ url_for('genre_list') }}">Genre List</a></li>
-                    {% if session.user %}
-                        <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">{{session.user}}<i class="material-icons right">arrow_drop_down</i></a></li>
-                    {% else %}
-                        <li><a href="{{ url_for('login') }}">Log In</a></li>
-                        <li><a href="{{ url_for('register') }}">Register</a></li>
-                    {% endif %}
-                </ul>
-            </div>
-        </nav>
+                <li><a class="dropdown-link" href="{{ url_for('add_book') }}">Add Book</a></li>
 
-        <ul class="sidenav" id="mobile-demo">
-            <li><a href="{{ url_for('home') }}">Home</a></li>
-            <li><a href="{{ url_for('all_books') }}">All Books</a></li>
-            <li><a href="{{ url_for('genre_list') }}">Genre List</a></li>
-            {% if session.user %}
-                <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
-                <li><a href="{{ url_for('add_book') }}">Add Book</a></li>
-                <li><a href="{{ url_for('logout') }}">Log Out</a></li>
-            {% else %}
-                <li><a href="{{ url_for('login') }}">Log In</a></li>
-                <li><a href="{{ url_for('register') }}">Register</a></li>
-            {% endif %}
-        </ul>
-    </header>
+                <li><a class="dropdown-link" href="{{ url_for('logout') }}">Log Out</a></li>
+            </ul>
 
-    <section>
-        {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                {% for message in messages %}
-                    <div class="row flashes">
-                        <h4 class="grey darken-4 center-align">{{message}}</h4>
-                    </div>
-                {% endfor %}
-            {% endif %}
-        {% endwith %}
-    </section>
+            <nav class="nav-extended">
+                <div class="nav-wrapper black">
+                    <a href="{{ url_for('home') }}" class="brand-logo left">Pen <span class="hub-logo">&nbsp;hub&nbsp;</span></a>
 
-    <div>
-        {% block content %}
-        {% endblock %}
-    </div>
+                    <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
 
-    <footer class="page-footer grey darken-3">
-          <div class="container">
-            <div class="row">
-              <div class="col l6 s12">
-                <h5 class="white-text">Pen Hub</h5>
-                <p class="grey-text text-lighten-4">The world's leading book review site!</p>
-              </div>
-              <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">Connect</h5>
-                <ul>
-                  <li><a class="grey-text text-lighten-3" href="www.facebook.com"><i class="fab fa-facebook"></i></a></li>
-                  <li><a class="grey-text text-lighten-3" href="www.twitter.com"><i class="fab fa-twitter"></i></a></li>
-                  <li><a class="grey-text text-lighten-3" href="www.instagram.com"><i class="fab fa-instagram"></i></a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="footer-copyright grey darken-4">
+                    <ul class="right hide-on-med-and-down">
+                        <li><a href="{{ url_for('home') }}">Home</a></li>
+
+                        <li><a href="{{ url_for('all_books') }}">All Books</a></li>
+
+                        <li><a href="{{ url_for('genre_list') }}">Genre List</a></li>
+
+                        {% if session.user %}
+                            <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">{{session.user}}<i class="material-icons right">arrow_drop_down</i></a></li>
+                        {% else %}
+                            <li><a href="{{ url_for('login') }}">Log In</a></li>
+                            <li><a href="{{ url_for('register') }}">Register</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </nav>
+
+            <ul class="sidenav" id="mobile-demo">
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+
+                <li><a href="{{ url_for('all_books') }}">All Books</a></li>
+
+                <li><a href="{{ url_for('genre_list') }}">Genre List</a></li>
+
+                {% if session.user %}
+                    <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
+
+                    <li><a href="{{ url_for('add_book') }}">Add Book</a></li>
+
+                    <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+                {% else %}
+                    <li><a href="{{ url_for('login') }}">Log In</a></li>
+
+                    <li><a href="{{ url_for('register') }}">Register</a></li>
+                {% endif %}
+            </ul>
+        </header>
+
+        <section>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="row flashes">
+                            <h4 class="grey darken-4 center-align">{{message}}</h4>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </section>
+
+        <div>
+            {% block content %}
+
+            {% endblock %}
+        </div>
+
+        <footer class="page-footer grey darken-3">
             <div class="container">
-            © 2020 Shaun Lindsley
-            <a class="grey-text text-lighten-4 right" href="https://github.com/vdgvzr">Github</a>
+                <div class="row">
+                    <div class="col l6 s12">
+                        <h5 class="white-text">Pen Hub</h5>
+
+                        <p class="grey-text text-lighten-4">The world's leading book review site!</p>
+                    </div>
+
+                    <div class="col l4 offset-l2 s12">
+                        <h5 class="white-text">Connect</h5>
+
+                        <ul>
+                            <li><a class="grey-text text-lighten-3" href="www.facebook.com"><i class="fab fa-facebook"></i></a></li>
+
+                            <li><a class="grey-text text-lighten-3" href="www.twitter.com"><i class="fab fa-twitter"></i></a></li>
+
+                            <li><a class="grey-text text-lighten-3" href="www.instagram.com"><i class="fab fa-instagram"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-          </div>
+
+            <div class="footer-copyright grey darken-4">
+                <div class="container">
+                    © 2020 Shaun Lindsley
+
+                    <a class="grey-text text-lighten-4 right" href="https://github.com/vdgvzr">Github</a>
+                </div>
+            </div>
         </footer>
 
-    <script>
-        $(document).ready(function() {
-            $(".dropdown-trigger").dropdown();
-            $('.sidenav').sidenav({
-                edge: "right"
+        <script>
+            $(document).ready(function() {
+                $(".dropdown-trigger").dropdown();
+                $('.sidenav').sidenav({
+                    edge: "right"
+                });
+                $('.carousel').carousel({
+                    numVisible: 10,
+                    padding: 100,
+                    indicators: true
+                });
+                $('.slider').slider();
+                $('select').formSelect();
+                $('.modal').modal();
             });
-            $('.carousel').carousel({
-                numVisible: 10,
-                padding: 100,
-                indicators: true
-            });
-            $('.slider').slider();
-            $('select').formSelect();
-            $('.modal').modal();
-        });
-    </script>
+        </script>
 
-    <script src="{{ url_for('static', filename='js/quote.js') }}" type="text/javascript"></script>
-</body>
+        <script src="{{ url_for('static', filename='js/quote.js') }}" type="text/javascript"></script>
+    </body>
 </html>

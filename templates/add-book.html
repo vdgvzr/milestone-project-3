@@ -28,13 +28,18 @@
 
                 <div class="row">
                     <div class="input-field col s12">
-                    <i class="material-icons prefix">local_library</i>
+                        <i class="material-icons prefix">local_library</i>
+
                         <select id="genre_name" name="genre_name" class="validate" required>
+
                         <option value="" disabled selected>Select a Genre</option>
+
                         {% for genre in genre %}
-                        <option value="{{genre.genre_name}}">{{genre.genre_name}}</option>
+                            <option value="{{ genre.genre_name }}">{{ genre.genre_name }}</option>
                         {% endfor %}
+
                         </select>
+                        
                         <label>Genre</label>
                     </div>
                 </div>

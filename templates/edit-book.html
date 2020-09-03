@@ -12,7 +12,7 @@
                     <div class="input-field col s6">
                         <i class="material-icons prefix">title</i>
 
-                        <input id="book_title" name="book_title" type="text" class="validate" value="{{book.book_title}}" required>
+                        <input id="book_title" name="book_title" type="text" class="validate" value="{{ book.book_title }}" required>
 
                         <label for="book_title">Title</label>
                     </div>
@@ -20,7 +20,7 @@
                     <div class="input-field col s6">
                         <i class="material-icons prefix">perm_identity</i>
 
-                        <input id="book_author" name="book_author" type="text" class="validate" value="{{book.book_author}}" required>
+                        <input id="book_author" name="book_author" type="text" class="validate" value="{{ book.book_author }}" required>
 
                         <label for="book_author">Author</label>
                     </div>
@@ -28,17 +28,22 @@
 
                 <div class="row">
                     <div class="input-field col s12">
+
                     <i class="material-icons prefix">local_library</i>
                         <select id="genre_name" name="genre_name" required>
+
                         <option value="" disabled selected>Select a Genre</option>
+
                         {% for genre in genre %}
                             {% if genre.genre_name == book.genre_name %}
-                                <option value="{{genre.genre_name}}" selected >{{genre.genre_name}}</option>
+                                <option value="{{ genre.genre_name }}" selected >{{ genre.genre_name }}</option>
                             {% else %}
-                                <option value="{{genre.genre_name}}">{{genre.genre_name}}</option>
+                                <option value="{{ genre.genre_name }}">{{ genre.genre_name }}</option>
                             {% endif %}
                         {% endfor %}
+
                         </select>
+                        
                         <label>Genre</label>
                     </div>
                 </div>
@@ -47,7 +52,7 @@
                     <div class="input-field col s12">
                         <i class="material-icons prefix">insert_photo</i>
 
-                        <input id="image_url" name="image_url" type="text" class="validate" value="{{book.image_url}}" required>
+                        <input id="image_url" name="image_url" type="text" class="validate" value="{{ book.image_url }}" required>
 
                         <label for="image_url">Cover Image URL</label>
                     </div>
@@ -57,7 +62,7 @@
                     <div class="input-field col s12">
                         <i class="material-icons prefix">history_edu</i>
 
-                        <textarea id="book_blurb" name="book_blurb" class="materialize-textarea validate" required>{{book.book_blurb}}</textarea>
+                        <textarea id="book_blurb" name="book_blurb" class="materialize-textarea validate" required>{{ book.book_blurb }}</textarea>
 
                         <label for="book_blurb">Blurb</label>
                     </div>
@@ -67,7 +72,7 @@
                     <div class="input-field col s12">
                         <i class="material-icons prefix">format_quote</i>
 
-                        <textarea id="book_quote" name="book_quote" class="materialize-textarea validate">{{book.book_quote}}</textarea>
+                        <textarea id="book_quote" name="book_quote" class="materialize-textarea validate">{{ book.book_quote }}</textarea>
 
                         <label for="book_quote">Favourite Quote</label>
                     </div>
@@ -77,7 +82,7 @@
                     <div class="input-field col s12">
                         <i class="material-icons prefix"></i>
 
-                        <input id="rating" name="rating" type="text" class="validate" value="{{book.rating}}">
+                        <input id="rating" name="rating" type="text" class="validate" value="{{ book.rating }}">
 
                         <label for="rating"></label>
                     </div>

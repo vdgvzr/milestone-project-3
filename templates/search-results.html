@@ -4,7 +4,7 @@
 
 {% block content %}
     <div class="container">
-        <h3 class="title center-align">Results for "{{query}}"</h3>
+        <h3 class="title center-align">Results for "{{ query }}"</h3>
 
         {% if no_of_docs == 0 %}
             <div>
@@ -23,28 +23,29 @@
         {% endif %}
 
         <div class="row grey darken-4">
-            {% for book in search|sort(attribute="book_title") %}
+            {% for book in search | sort(attribute="book_title") %}
                 <div class="col s8 offset-s2 m4 l2">
                     <div class="card grey darken-3" style="overflow: visible;">
                         <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="{{book.image_url}}" alt="book_image">
+                            <img class="activator" src="{{ book.image_url }}" alt="book_image">
                         </div>
 
                         <div class="card-content">
                             <div style="height: 20px;">
                                 {% if book.rating %}
-                                    <p><i class="material-icons card-star">star_rate</i> {{book.rating}}</p>
+                                    <p><i class="material-icons card-star">star_rate</i> {{ book.rating }}</p>
                                 {% else %}
                                     <p>(No reviews yet)</p>
                                 {% endif %}
                             </div>
-                            <p class="card-title white-text text-darken-4 activator capitalize">{{book.book_title}}</p>
+                            
+                            <p class="card-title white-text text-darken-4 activator capitalize">{{ book.book_title }}</p>
                         </div>
 
                         <div class="card-reveal grey darken-3">
-                            <span class="card-title title capitalize">{{book.book_title}}<i class="material-icons right">close</i></span>
+                            <span class="card-title title capitalize">{{ book.book_title }}<i class="material-icons right">close</i></span>
 
-                            <p class="card-blurb">{{book.book_blurb}}</p>
+                            <p class="card-blurb">{{ book.book_blurb }}</p>
 
                             <a href="{{ url_for('book_review', book_id=book._id) }}">More..</a>
                         </div>

@@ -6,22 +6,22 @@
     <div class="container">
         <div class="row grey darken-4 valign-wrapper">
             <div class="col s12 m3 valign-wrapper">
-                <img class="review-image responsive-img" src="{{book.image_url}}">
+                <img class="review-image responsive-img" src="{{ book.image_url }}">
             </div>
 
             <div class="col s12 m9">
-                <h3 class="title capitalize">{{book.book_title}}</h3>
+                <h3 class="title capitalize">{{ book.book_title }}</h3>
 
-                <h6 class="capitalize">{{book.book_author}}</h6>
+                <h6 class="capitalize">{{ book.book_author }}</h6>
 
-                <p>{{book.genre_name}}</p>
+                <p>{{ book.genre_name }}</p>
 
-                <p>{{book.book_blurb}}</p>
+                <p>{{ book.book_blurb }}</p>
 
-                <p>Reader rating: {{average}}/5</p>
+                <p>Reader rating: {{ average }}/5</p>
 
                 <p>
-                    {{review_amount}}
+                    {{ review_amount }}
 
                     {% if review_amount == 1 %}
                         review
@@ -40,7 +40,7 @@
 
         <div class="row">
             <div class="col s12 m12 l4 center-align">
-                <a href="https://www.amazon.com/s?k={{book.book_title}}" class="waves-effect waves-light btn btn-gold">Buy Book</a>
+                <a href="https://www.amazon.com/s?k={{ book.book_title }}" class="waves-effect waves-light btn btn-gold">Buy Book</a>
             </div>
         </div>
 
@@ -49,20 +49,20 @@
         <div class="row">
             <div class="col s12 grey darken-4">
                 <div>
-                    <p><span class="review-user">{{rev.username}}</span> rated this {{rev.rating}}/5 <span class="review-date"> - {{rev.created_at}}</span></p>
+                    <p><span class="review-user">{{ rev.username }}</span> rated this {{r ev.rating }}/5 <span class="review-date"> - {{ rev.created_at }}</span></p>
                 </div>
 
-                <p class="review-text">"{{rev.review}}"</p>
+                <p class="review-text">"{{ rev.review }}"</p>
 
                 {% if session.user == rev.username %}
                     <a href="{{ url_for('edit_review', book_id=book._id, review_id=rev._id) }}" class="waves-effect waves-light btn left btn-small yellow darken-2">Edit</a>
 
-                    <a href="#modal2{{rev._id}}" class="waves-effect waves-light btn left btn-small yellow darken-2 modal-trigger">Delete</a>
+                    <a href="#modal2{{ rev._id }}" class="waves-effect waves-light btn left btn-small yellow darken-2 modal-trigger">Delete</a>
                 {% endif %}
             </div>
         </div>
 
-        <div id="modal2{{rev._id}}" class="modal">
+        <div id="modal2{{ rev._id }}" class="modal">
             <div class="modal-content">
                 <h4>Are you sure you want to delete your review?</h4>
             </div>
@@ -83,7 +83,7 @@
                         <div class="input-field col s6">
                             <i class="material-icons prefix">account_circle</i>
 
-                            <input id="username" name="username" type="text" class="validate" value="{{session.user}}" required>
+                            <input id="username" name="username" type="text" class="validate" value="{{ session.user }}" required>
 
                             <label for="username">Username</label>
                         </div>
