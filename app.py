@@ -16,7 +16,6 @@ from flask_paginate import (
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from datetime import datetime
-from decouple import config
 from werkzeug.security import (
     generate_password_hash,
     check_password_hash
@@ -30,7 +29,7 @@ variables which are stored in a .env file.
 This file is ignored from repository by the
 .gitignore file.'''
 app.config["MONGO_DBNAME"] = 'pen_hub'
-app.config["MONGO_URI"] = config('MONGO_URI')
+app.config["MONGO_URI"] = os.environ.get('MONGO_URI')
 app.secret_key = os.environ.get('SECRET_KEY')
 
 # Set database variable
