@@ -137,41 +137,9 @@ The implementation has stayed fairly consistent to the original design.
 
 ***
 
-## Technologies Used
-
-* [Github](https://www.github.com/) - Used for hosting and version control.
-* [GitPod](https://www.gitpod.io/) - Online code editor.
-* [Heroku](https://www.heroku.com/) - Used for app deployment.
-* [MongoDB](https://www.github.com/) - Databse provider.
-* [HTML5](https://en.wikipedia.org/wiki/HTML5) - For programming the templates.
-* [CSS](https://en.wikipedia.org/wiki/Cascading_Style_Sheets) - For adding styles to html elements.
-* [Javascript](https://en.wikipedia.org/wiki/JavaScript) - Used to write functions for site interactivity.
-* [Python](https://www.python.org/download/releases/3.0/) - Used for writing app functions and to communicate with mongoDB using pymongo.
-* [JQuery](https://jquery.com/) - Ussed to access elements between languages.
-* [Materialize](https://www.materializecss.com/) - Design framework used for site components.
-* [Balsamiq](https://www.balsamiq.com/) - Used for wireframe design.
-* [HTMLValidator](https://validator.w3.org/) - For testing html code validity.
-* [CSSValidator](https://jigsaw.w3.org/css-validator/) - For testing css code validity.
-* [JavaScriptValidator](https://esprima.org/demo/validate.html) - For testing js code.
-* [PythonCodeChecker](https://extendsclass.com/python-tester.html) - For testing python code.
-
-
-
-
-
-***
-
 ## Testing
 
-### Manual Testing
-
-* HTML
-
-* CSS
-
-* JavaScript
-
-### Peer Testing
+### Homepage
 
 
 
@@ -191,13 +159,63 @@ The implementation has stayed fairly consistent to the original design.
 
 ### Other Bugs and Problems
 
-* 
+*  A 5 star rating system was to be implemented for the user to rate a book. After trying to implement using css, it became known that it is very difficult to do with materialize as the form framework.
+* There is a known bug with flask pagination, so the design of the search and all-books pages has been impacted as a result.
 
 ***
 
 ## Deployment
 
+### Deploying The Site
 
+To deploy the app on Heroku, the following steps have been followed:
+
+1. Sign up to Heroku and create a new app.
+
+2. Create a Procfile using the command: `echo web: python app.py > Procfile`.
+
+3. Store the requirements in a text file: `pip3 freeze --local > requirements.txt`.
+
+4. Add, commit and push all files to the GitHub repository.
+
+5. In Heroku, connect to Github.
+
+6. Select the repo and link to the Heroku collection.
+
+7. Set the app's config variables within the settings page:
+
+    - IP: 0.0.0.0
+    - PORT: 5000
+    - MONGO_DBNAME: <database_name>
+    - MONGO_URI: `mongodb+srv://<username>:<password>@<cluster_name>-qtxun.mongodb.net/<database_name>?retryWrites=true&w=majority;`
+    - SECRET_KEY: <secret_key>
+
+***
+
+## Technologies Used
+
+* [Github](https://www.github.com/) - Used for hosting and version control.
+* [GitPod](https://www.gitpod.io/) - Online code editor.
+* [Flask](https://flask.palletsprojects.com/en/1.1.x/) - Flask site framework.
+* [Jinja2](https://jinja.palletsprojects.com/en/2.10.x/) - For data templates.
+* [Heroku](https://www.heroku.com/) - Used for app deployment.
+* [MongoDB](https://www.github.com/) - Databse provider.
+* [HTML5](https://en.wikipedia.org/wiki/HTML5) - For programming the templates.
+* [CSS](https://en.wikipedia.org/wiki/Cascading_Style_Sheets) - For adding styles to html elements.
+* [Javascript](https://en.wikipedia.org/wiki/JavaScript) - Used to write functions for site interactivity.
+* [Python](https://www.python.org/download/releases/3.0/) - Used for writing app functions and to communicate with mongoDB using pymongo.
+* [JQuery](https://jquery.com/) - Ussed to access elements between languages.
+* [Materialize](https://www.materializecss.com/) - Design framework used for site components.
+* [Balsamiq](https://www.balsamiq.com/) - Used for wireframe design.
+* [HTMLValidator](https://validator.w3.org/) - For testing html code validity.
+* [CSSValidator](https://jigsaw.w3.org/css-validator/) - For testing css code validity.
+* [JavaScriptValidator](https://esprima.org/demo/validate.html) - For testing js code.
+* [PythonCodeChecker](https://extendsclass.com/python-tester.html) - For testing python code.
+* [Favicon](https://www.favicon-generator.org/) - For creating site favicon.
+* [GoogleFonts](https://fonts.google.com/) - For providing fonts for the site.
+* [AmIResponsive?](http://ami.responsivedesign.is/) - To test site responsiveness.
+
+***
 
 ***
 

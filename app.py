@@ -32,8 +32,8 @@ variables which are stored in a .env file.
 This file is ignored from repository by the
 .gitignore file.'''
 app.config['MONGO_DBNAME'] = os.environ.get('MONGO_DBNAME')
-app.config['MONGO_URI'] = os.getenv('MONGO_URI')
-app.secret_key = os.getenv('SECRET_KEY')
+app.config['MONGO_URI'] = os.environ.get('MONGO_URI')
+app.secret_key = os.environ.get('SECRET_KEY')
 
 # Set database variable
 mongo = PyMongo(app)
