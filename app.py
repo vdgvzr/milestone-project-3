@@ -388,8 +388,6 @@ def delete_review(book_id, review_id):
     return redirect(url_for('book_review', book_id=book_id))
 
 
-# Set the host, port and debug
+# Run the app
 if __name__ == '__main__':
-    app.run(host=os.environ.get('IP'),
-            port=int(os.environ.get('PORT')),
-            debug=True)
+    app.run(port=os.environ.get('PORT'), debug=True)
