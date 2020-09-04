@@ -172,7 +172,7 @@ To deploy the app on Heroku, the following steps have been followed:
 
 1. Sign up to Heroku and create a new app.
 
-2. Create a Procfile using the command: `echo web: python app.py > Procfile`.
+2. Create a Procfile using the command: `echo web: gunicorn app:app > Procfile`.
 
 3. Store the requirements in a text file: `pip3 freeze --local > requirements.txt`.
 
@@ -184,13 +184,11 @@ To deploy the app on Heroku, the following steps have been followed:
 
 7. Set the app's config variables within the settings page:
 
-    - IP: 0.0.0.0
-    - PORT: 5000
     - MONGO_DBNAME: <database_name>
     - MONGO_URI: `mongodb+srv://<username>:<password>@<cluster_name>-qtxun.mongodb.net/<database_name>?retryWrites=true&w=majority;`
     - SECRET_KEY: <secret_key>
 
-8. Deploy the app on Heroku.
+8. Deploy the app on Heroku. needs more
 
 9. The app can now be opened and viewed.
 
@@ -213,19 +211,9 @@ To deploy the app on Heroku, the following steps have been followed:
 
     - `pip3 install -r requirements.txt`
 
-5. Create a Procfile and set the web scale:
+5. Sign into MongoDB and create a new database.
 
-    - `ech web: python app.py > Procfile`
-    - `heroku ps:scale web=1`
-
-6. Sign into MongoDB and create a new database with the collections:
-
-    - books
-    - genre
-    - review
-    - users
-
-7. Run the python file. The app is now live.
+6. Run the python file. The app is now live.
 
 ***
 

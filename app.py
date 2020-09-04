@@ -28,7 +28,7 @@ load_dotenv()
 app = Flask(__name__)
 
 '''Set the MONGO_URI and SECRET_KEY environment
-variables which are stored in the env.py file.
+variables which are stored in the .env file.
 This file is ignored from repository by the
 .gitignore file.'''
 app.config['MONGO_DBNAME'] = os.environ.get('MONGO_DBNAME')
@@ -50,14 +50,24 @@ thus rendering the templates for the app's pages.'''
 
 @app.route('/')
 def home():
+    '''It is not normally best practice to query the
+    satabase multiple times, however it has been necessary for
+    the development of this project'''
+
+    # Limits the highest rated books to 10
+    books = mongo.db.books.find().limit(10)
+
+    # Sorts documents in descending order and limits to 6
+    recents = mongo.db.books.find().sort('_id', -1).limit(6)
+
+    quotes = mongo.db.books.find()
+    genre = mongo.db.genre.find()
     return render_template(
         'index.html',
-        # Limits the highest rated books to 10
-        books=mongo.db.books.find().limit(10),
-        # Sorts documents in descending order and limits to 6
-        recents=mongo.db.books.find().sort('_id', -1).limit(6),
-        quotes=mongo.db.books.find(),
-        genre=mongo.db.genre.find()
+        books=books,
+        recents=recents,
+        quotes=quotes,
+        genre=genre
     )
 
 
