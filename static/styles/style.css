@@ -1,4 +1,8 @@
+/* ----------------------------------- Import Roboto and Noto Sand JP from google fonts */
+
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Roboto&display=swap');
+
+/* ----------------------------------- Main styles */
 
 .roboto {
     font-family: 'Noto Sans JP', sans-serif;
@@ -23,15 +27,37 @@ body {
     text-transform: capitalize;
 }
 
-.flashes {
-    line-height: 2;
-}
-
 .home-header {
     background-image: linear-gradient(to bottom, transparent, black), url('/static/assets/images/library.jpeg');
     background-repeat: no-repeat;
     background-size: 100vw;
 }
+
+.title {
+    font-family: 'Noto Sans JP', sans-serif !important;
+    color: goldenrod;
+    margin-top: 10px;
+}
+
+.container {
+    margin-top: 50px;
+}
+
+a {
+    color: inherit;
+}
+
+.btn-gold {
+    background-color: goldenrod;
+    color: black;
+}
+
+.link:hover {
+    color: goldenrod;
+    transition: 0.3s;
+}
+
+/* ----------------------------------- Navbar */
 
 nav .brand-logo {
     margin-left: 50px;
@@ -42,12 +68,6 @@ nav .hub-logo {
     border-radius: 5px;
 }
 
-.title {
-    font-family: 'Noto Sans JP', sans-serif !important;
-    color: goldenrod;
-    margin-top: 10px;
-}
-
 nav ul a {
     margin-right: 50px;
 }
@@ -56,9 +76,11 @@ nav ul a {
     background-color: #eee;
 }
 
-.container {
-    margin-top: 50px;
+nav ul a:hover {
+    background-color: goldenrod;
 }
+
+/* ----------------------------------- Index */
 
 .carousel {
     height: 500px;
@@ -85,19 +107,26 @@ nav ul a {
     margin-top: 50px;
 }
 
-.center-cols > col {
-    float: none;
-    display: inline-block;
+.quote-content {
+    display: none;
 }
 
-.btn-small {
-    height: 24px;
-    width: 60px;
-    line-height: 24px;
-    margin: 5px 5px;
-    padding: 0 0.5em;
-    color: black;
+.genre-link {
+    font-size: 0.9rem;
+    display: block;
 }
+
+#quote-box {
+    height: 75px;
+    font-size: 1.1em;
+}
+
+.genre-box {
+    height: 300px;
+    column-count: 4;
+}
+
+/* ----------------------------------- Cards */
 
 .card {
     display: block;
@@ -127,17 +156,15 @@ nav ul a {
     color: whitesmoke;
 }
 
-a {
-    color: inherit;
+.card-star {
+    font-size: 1.1rem;
+    color: gold;
 }
 
-.genre-link {
-    font-size: 0.9rem;
-    display: block;
-}
+/* ----------------------------------- Reviews */
 
-.quote-content {
-    display: none;
+.review-image {
+    border: 10px solid gray;
 }
 
 .review-text {
@@ -150,25 +177,20 @@ a {
     font-style: italic;
 }
 
-#quote-box {
-    height: 75px;
-    font-size: 1.1em;
+.book-review-box {
+    padding: 10px;
 }
 
-.genre-box {
-    height: 300px;
-    column-count: 4;
+.review-user {
+    color: goldenrod;
+    font-size: 20px;
 }
 
-.btn-gold {
-    background-color: goldenrod;
-    color: black;
+.rating-button {
+    display: inline;
 }
 
-.card-star {
-    font-size: 1.1rem;
-    color: gold;
-}
+/* ----------------------------------- Materialize Override */
 
 .validate,
 .select-wrapper input.select-dropdown {
@@ -250,37 +272,32 @@ textarea.materialize-textarea:focus:not([readonly])+label,
     background-color: gold;
 }
 
-nav ul a:hover {
-    background-color: goldenrod;
-}
-
-.pagination li.active {
-    background-color: goldenrod;
-}
-
 [type="checkbox"].filled-in:checked+span:not(.lever):after {
     border: 2px solid goldenrod;
     background-color: goldenrod;
 }
 
-.review-image {
-    border: 10px solid gray;
+/* ----------------------------------- Misc */
+
+.flashes {
+    line-height: 2;
+    height: 50px;
 }
 
-.book-review-box {
-    padding: 10px;
+.center-cols > col {
+    float: none;
+    display: inline-block;
 }
 
-.review-user {
-    color: goldenrod;
-    font-size: 20px;
+.btn-small {
+    height: 24px;
+    width: 60px;
+    line-height: 24px;
+    margin: 5px 5px;
+    padding: 0 0.5em;
+    color: black;
 }
 
-.rating-button {
-    display: inline;
-}
-
-.link:hover {
-    color: goldenrod;
-    transition: 0.3s;
+.pagination li.active {
+    background-color: goldenrod;
 }
