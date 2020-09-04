@@ -1,6 +1,6 @@
-# Milestone Project 3 - Data Centric Development
-
 # Pen Hub
+
+## Milestone Project 3 - Data Centric Development
 
 For this project I have decided to build a book review and recommendation site.
 
@@ -8,31 +8,105 @@ The site will alow users to add, edit or delete details of a particular book and
 The user will also be able to search for books based on a rating system and to also purchase the book through
 an affiliate link. The site owner will then be able to earn money based on each book purchased through the link.
 
+![AmIResponsive](static/assets/images/responsive.png "Responsive")
+
+***
+
+## Contents
+
+1. [UX](https://github.com/vdgvzr/milestone-project-3#ux)
+    - [Goals](https://github.com/vdgvzr/milestone-project-3#goals)
+    - [Developer Goals](https://github.com/vdgvzr/milestone-project-3#developer-goals)
+    - [User Stories](https://github.com/vdgvzr/milestone-project-3#user-stories)
+    - [Design](https://github.com/vdgvzr/milestone-project-3#design)
+        - [Colours Used](https://github.com/vdgvzr/milestone-project-3#colours-used)
+        - [Fonts](https://github.com/vdgvzr/milestone-project-3#fonts)
+        - [Wireframes](https://github.com/vdgvzr/milestone-project-3#wireframes)
+2. [Features](https://github.com/vdgvzr/milestone-project-3#features)
+    - [Existing Features](https://github.com/vdgvzr/milestone-project-3#existing-features)
+    - [Features Left to Implement](https://github.com/vdgvzr/milestone-project-3#features-left-to-implement)
+3. [Testing](https://github.com/vdgvzr/milestone-project-3#testing)
+4. [Deployment](https://github.com/vdgvzr/milestone-project-3#deployment)
+    - [Deploying The Site](https://github.com/vdgvzr/milestone-project-3#deploying-the-site)
+    - [Deploying Locally](https://github.com/vdgvzr/milestone-project-3#deploying-locally)
+5. [Technologies Used](https://github.com/vdgvzr/milestone-project-3#technologies-used)
+6. [Credits](https://github.com/vdgvzr/milestone-project-3#credits)
+    - [Content](https://github.com/vdgvzr/milestone-project-3#content)
+    - [Media](https://github.com/vdgvzr/milestone-project-3#media)
+    - [Code](https://github.com/vdgvzr/milestone-project-3#code)
+    - [Acknowledements](https://github.com/vdgvzr/milestone-project-3#acknowledgements)
+
 ***
 
 ## UX
+
+### Goals
+
+As part of the Full Stack Developer course from Code Institute, this project was designed to fulfill the scope of creating an application
+that utilises CRUD operations on a database.
 
 The primary demographic for the site will of course be book lovers, however there will likely be a very wide and diverse range
 of people that would have interest in it. For this reason, I will aim to design the site to be as simple to use as possible,
 leaving room for the appropriate information to be displayed as cleanly and easy to read as possible.
 
-The initial design mockup for the site can be found [here](https://github.com/vdgvzr/milestone-project-3/blob/6d93cfebab6a97d90dd757972edd93280d9dea77/assets/mockups/Pen%20Hub%20-%20Initial%20Mockup.pdf).
-
 * Originally the idea was to create the book entry and review simultaneously, however I have decided to keep the book details
 and review entries separate to mitigate duplication of book entries. Ideally the, review and rating for the book will appear beneath
 the book details so two separate forms will have to be present on the site - one for book entry, and one for review entry for said book.
 
-Because of this, I have identified the main users of the site to be a casual user, and a consumer:
+### Developer Goals
+
+* Create an easy to use webapp where I can learn about and perform CRUD operations on a mongo database.
+* Practice how to use Heroku, Mongo DB, Jinja, Materialize and Flask.
 
 ### User Stories
 
-#### Casual Reviewer
+As a user, I would like to:
 
-As a casual user, I would like to easily add the information for a book and to view, edit and delete my entry.
+- [x] Search for and browse for my favourite book or something to read next.
+- [x] Search for books based on genre.
+- [x] See what other people are saying about books.
+- [x] If the book doesn't exist on the site, I can add a book.
+- [x] Be able to leave my own reviews on other books that other users have added.
+- [x] Be able to buy a book via a link to an online shop.
 
-#### Consumer
+***
 
-As a consumer, I would like to search for book titles and browse by popularity in order to find a book to purchase.
+### Design
+
+I used the materialize framework to design the site. As much consideration as possible has gone into implementing components and altering the styles of each.
+The books to be displayed to the user as easy-to-navigate interactive cards that contain essential information about the book, as well as a book rating on display.
+
+#### Colours Used
+
+I chose the colors based on the initial design of using yellow and black with grey to highlight the important sections, such as the book cards.
+The primary color used is goldenrod, chosen because of it's lack of intensity compared to gold/yellow. Various shades of materialize grey is used for the standout sections.
+
+Colours:
+
+- ![#000000](https://placehold.it/15/000000/000000?text=+) `#000000 - black, base colour`
+- ![#DAA520](https://placehold.it/15/DAA520/000000?text=+) `#DAA520 - goldenrod, primary colour`
+- ![#A9A9A9](https://placehold.it/15/A9A9A9/000000?text=+) `#A9A9A9 - darkgray, secondary colour`
+- ![#808080](https://placehold.it/15/808080/000000?text=+) `#808080 - gray, secondary colour`
+- ![#D3D3D3](https://placehold.it/15/D3D3D3/000000?text=+) `#D3D3D3 - lightgray, secondary colour`
+
+Materialize Colors:
+
+- ![#212121](https://placehold.it/15/212121/000000?text=+) `#212121 - grey darken-4`
+- ![#424242](https://placehold.it/15/424242/000000?text=+) `#424242 - grey darken-3`
+- ![#008000](https://placehold.it/15/008000/000000?text=+) `#008000 - red (form valid)`
+- ![#FF0000](https://placehold.it/15/FF0000/000000?text=+) `#FF0000 - red (form invalid)`
+
+#### Fonts
+
+![FontsExample](static/assets/images/fonts.png "Fonts")
+
+The font pair I chose for the site was Roboto and Noto Sans JP from [Google Fonts](https://fonts.google.com) because it closesly matches the smart-casual aesthetic of the site.
+
+#### Wireframes
+
+High quality mockups of the site can be found [here](static/assets/mockups/mockups.png "Mockups").
+
+The implementation has stayed fairly consistent to the original design.
 
 ***
 
@@ -40,18 +114,50 @@ As a consumer, I would like to search for book titles and browse by popularity i
 
 ### Existing Features
 
-* 
+#### Search Books by Title or Author
 
+* The user can search by title or author to find books.
+
+#### Registration and Login Functionality
+
+* If a user wishes to add books and reviews themselves, then they can register and login to do so.
+
+#### Add, Edit and Delete Book Entries and Reviews
+
+* Once logged in, the user will be able to perform CRUD operations for books and reviews.
+
+#### Buy Books
+
+* Upon accessing the book review page, registered and unregistered users will be able to buy a book through a custom link.
 
 ### Features Left to Implement
 
-* 
+* I would like the user profile to be expanded to include an option to upload a profile picture.
+* I would also like to include a report or email feedback page, in case there are users leaving inappropriate reviews or book entries.
 
 ***
 
 ## Technologies Used
 
 * [Github](https://www.github.com/) - Used for hosting and version control.
+* [GitPod](https://www.gitpod.io/) - Online code editor.
+* [Heroku](https://www.heroku.com/) - Used for app deployment.
+* [MongoDB](https://www.github.com/) - Databse provider.
+* [HTML5](https://en.wikipedia.org/wiki/HTML5) - For programming the templates.
+* [CSS](https://en.wikipedia.org/wiki/Cascading_Style_Sheets) - For adding styles to html elements.
+* [Javascript](https://en.wikipedia.org/wiki/JavaScript) - Used to write functions for site interactivity.
+* [Python](https://www.python.org/download/releases/3.0/) - Used for writing app functions and to communicate with mongoDB using pymongo.
+* [JQuery](https://jquery.com/) - Ussed to access elements between languages.
+* [Materialize](https://www.materializecss.com/) - Design framework used for site components.
+* [Balsamiq](https://www.balsamiq.com/) - Used for wireframe design.
+* [HTMLValidator](https://validator.w3.org/) - For testing html code validity.
+* [CSSValidator](https://jigsaw.w3.org/css-validator/) - For testing css code validity.
+* [JavaScriptValidator](https://esprima.org/demo/validate.html) - For testing js code.
+* [PythonCodeChecker](https://extendsclass.com/python-tester.html) - For testing python code.
+
+
+
+
 
 ***
 

@@ -22,7 +22,7 @@ from werkzeug.security import (
     check_password_hash
 )
 if path.exists('env.py'):
-    '''import env'''
+    import env
 
 # Define the app here
 app = Flask(__name__)
@@ -33,7 +33,7 @@ This file is ignored from repository by the
 .gitignore file.'''
 app.config['MONGO_DBNAME'] = os.environ.get('MONGO_DBNAME')
 app.config['MONGO_URI'] = os.getenv('MONGO_URI')
-app.secret_key = os.environ.get('SECRET_KEY')
+app.secret_key = os.getenv('SECRET_KEY')
 
 # Set database variable
 mongo = PyMongo(app)
@@ -257,7 +257,7 @@ def login():
                 a security precaution against brute force hacking
                 attempts.'''
                 flash('Incorrect Username and/or Password')
-                return(url_for('login'))
+                return redirect(url_for('login'))
 
         else:
             '''If neither username nor password can be validated
