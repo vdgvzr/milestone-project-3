@@ -1,9 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Roboto&display=swap');
+
+.roboto {
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+.noto {
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
 *i {
     position: relative;
     top: 5px;
 }
 
 body {
+    font-family: 'Noto Sans JP', sans-serif;
     background-color: black;
     color: lightgray;
 }
@@ -32,6 +43,7 @@ nav .hub-logo {
 }
 
 .title {
+    font-family: 'Noto Sans JP', sans-serif !important;
     color: goldenrod;
     margin-top: 10px;
 }
