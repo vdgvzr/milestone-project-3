@@ -190,6 +190,43 @@ To deploy the app on Heroku, the following steps have been followed:
     - MONGO_URI: `mongodb+srv://<username>:<password>@<cluster_name>-qtxun.mongodb.net/<database_name>?retryWrites=true&w=majority;`
     - SECRET_KEY: <secret_key>
 
+8. Deploy the app on Heroku.
+
+9. The app can now be opened and viewed.
+
+### Deploying Locally
+
+1. The following components are present:
+
+    - [Git](https://gist.github.com/derhuerst/1b15ff4652a867391f03)
+    - [pip](https://pip.pypa.io/en/stable/installing/)
+    - [Python3](https://www.python.org/downloads/)
+    - [A MongoDB Account](https://www.mongodb.com/cloud/atlas)
+
+2. Download the .zip file from the repo in GitHub. You can also clone the repo using the following command:
+
+    - `git clone https://github.com/vdgvzr/milestone-project-3`
+
+3. Create an environment (env) whih must contain the MONGO_URI and SECRET_KEY variables.
+
+4. Install all requirements from the requirements.txt file:
+
+    - `pip3 install -r requirements.txt`
+
+5. Create a Procfile and set the web scale:
+
+    - `ech web: python app.py > Procfile`
+    - `heroku ps:scale web=1`
+
+6. Sign into MongoDB and create a new database with the collections:
+
+    - books
+    - genre
+    - review
+    - users
+
+7. Run the python file. The app is now live.
+
 ***
 
 ## Technologies Used
@@ -227,4 +264,4 @@ To deploy the app on Heroku, the following steps have been followed:
 
 ### Acknowledgements
 
-* https://webdevtrick.com/css-star-rating/ for star rating concept
+* https://webdevtrick.com/css-star-rating/ for star rating concept.
