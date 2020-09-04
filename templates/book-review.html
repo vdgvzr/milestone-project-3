@@ -3,6 +3,8 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
+    <!-- Displays the information of the book that is clicked via the book's ObjectId -->
     <div class="container">
         <div class="row grey darken-4 valign-wrapper">
             <div class="col s12 m3 valign-wrapper">
@@ -19,7 +21,8 @@
                 <p>{{ book.book_blurb }}</p>
 
                 <p>Reader rating: {{ average }}/5</p>
-
+                
+                <!-- Simple if statement to choose between review singular or plural depending on number of reviews -->
                 <p>
                     {{ review_amount }}
 
@@ -30,6 +33,7 @@
                     {% endif %}
                 </p>
 
+                <!-- Displays the ability to edit or delete a book entry based on whether a user is logged in -->
                 {% if session.user %}
                     <a href="{{ url_for('edit_book', book_id=book._id) }}" class="waves-effect waves-light btn left btn-small yellow darken-2">Edit</a>
 
@@ -44,38 +48,39 @@
             </div>
         </div>
 
+        <!-- For loop to display all reviews on that book -->
         {% for rev in review %}
+            <div class="row">
+                <div class="col s12 grey darken-4">
+                    <div>
+                        <p><span class="review-user">{{ rev.username }}</span> rated this {{ rev.rating }}/5 <span class="review-date"> - {{ rev.created_at }}</span></p>
+                    </div>
 
-        <div class="row">
-            <div class="col s12 grey darken-4">
-                <div>
-                    <p><span class="review-user">{{ rev.username }}</span> rated this {{ rev.rating }}/5 <span class="review-date"> - {{ rev.created_at }}</span></p>
+                    <p class="review-text">"{{ rev.review }}"</p>
+
+                    <!-- Allows the user to edit or delete their own review, but not others -->
+                    {% if session.user == rev.username %}
+                        <a href="{{ url_for('edit_review', book_id=book._id, review_id=rev._id) }}" class="waves-effect waves-light btn left btn-small yellow darken-2">Edit</a>
+
+                        <a href="#modal2{{ rev._id }}" class="waves-effect waves-light btn left btn-small yellow darken-2 modal-trigger">Delete</a>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div id="modal2{{ rev._id }}" class="modal">
+                <div class="modal-content">
+                    <h4>Are you sure you want to delete your review?</h4>
                 </div>
 
-                <p class="review-text">"{{ rev.review }}"</p>
+                <div class="modal-footer">
+                    <a href="#!" class="modal-close waves-effect waves-green btn-flat left">Cancel</a>
 
-                {% if session.user == rev.username %}
-                    <a href="{{ url_for('edit_review', book_id=book._id, review_id=rev._id) }}" class="waves-effect waves-light btn left btn-small yellow darken-2">Edit</a>
-
-                    <a href="#modal2{{ rev._id }}" class="waves-effect waves-light btn left btn-small yellow darken-2 modal-trigger">Delete</a>
-                {% endif %}
+                    <a href="{{ url_for('delete_review', book_id=book._id, review_id=rev._id) }}" class="modal-close waves-effect waves-green btn-flat right">Delete</a>
+                </div>
             </div>
-        </div>
-
-        <div id="modal2{{ rev._id }}" class="modal">
-            <div class="modal-content">
-                <h4>Are you sure you want to delete your review?</h4>
-            </div>
-
-            <div class="modal-footer">
-                <a href="#!" class="modal-close waves-effect waves-green btn-flat left">Cancel</a>
-
-                <a href="{{ url_for('delete_review', book_id=book._id, review_id=rev._id) }}" class="modal-close waves-effect waves-green btn-flat right">Delete</a>
-            </div>
-        </div>
-
         {% endfor %}
 
+        <!-- Only users are able to view the review form -->
         {% if session.user %}
             <div class="row">
                 <form id="rating-form" action="{{ url_for('add_review', book_id=book._id) }}" method="POST" class="col s12"> 

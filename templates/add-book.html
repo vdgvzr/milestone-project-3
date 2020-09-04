@@ -7,6 +7,8 @@
         <h3 class="title center-align">Add Book</h3>
 
         <div class="row">
+
+            <!-- All form values will be sent POST to the database through the 'insert_book route' -->
             <form action="{{ url_for('insert_book') }}" method="POST" class="col s12">
                 <div class="row">
                     <div class="input-field col s6">
@@ -34,6 +36,7 @@
 
                         <option value="" disabled selected>Select a Genre</option>
 
+                         <!-- Generates the list of genres available to choose from as the genre value for the book -->
                         {% for genre in genre %}
                             <option value="{{ genre.genre_name }}">{{ genre.genre_name }}</option>
                         {% endfor %}

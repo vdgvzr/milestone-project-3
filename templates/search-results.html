@@ -6,6 +6,7 @@
     <div class="container">
         <h3 class="title center-align">Results for "{{ query }}"</h3>
 
+        <!-- If the search query is unsuccessful, display error message in page, along with a link to add the book that's missing for the user -->
         {% if no_of_docs == 0 %}
             <div>
                 <h4>404</h4>
@@ -16,12 +17,16 @@
 
                 <br>
 
+                <!-- Displays relevent links depending on whether user is logged in or not -->
                 {% if session.user %}
                     <a href="{{ url_for('add_book') }}">Can't find what you're looking for? Add your book here!</a>
+                {% else %}
+                    <a href="{{ url_for('login') }}">Can't find what you're looking for? Register/login now!</a>
                 {% endif %}
             </div>
         {% endif %}
 
+        <!-- If search is successul, display book card here -->
         <div class="row grey darken-4">
             {% for book in search | sort(attribute="book_title") %}
                 <div class="col s8 offset-s2 m4 l2">

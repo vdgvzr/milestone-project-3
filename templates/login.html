@@ -6,6 +6,7 @@
     <div class="container">
         <h3 class="title center-align">Log In</h3>
 
+        <!-- Login form that checks the input credentials against the existing_user variable to allow access to profile page and ability to perform CRUD on books and reviews -->
         <div class="row">
             <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('login') }}">
                 <div class="card-panel black">
@@ -29,6 +30,8 @@
 
                             <p>
                                 <label>
+
+                                    <!-- Calls the passwordShow() function from password.js when checked -->
                                     <input type="checkbox" class="filled-in" onclick="passwordShow()"/>
 
                                     <span>Show Password</span>

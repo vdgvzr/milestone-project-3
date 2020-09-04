@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 
+<!-- Base template build following the DRY principle  -->
+
 <html lang="en">
     <head>
+        <!-- Head block containing imported stylesheets, scripts and local scripts -->
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -41,7 +44,8 @@
                         <li><a href="{{ url_for('all_books') }}">All Books</a></li>
 
                         <li><a href="{{ url_for('genre_list') }}">Genre List</a></li>
-
+                        
+                        <!-- Display the appropriate links depending on whether or not the user is logged in -->
                         {% if session.user %}
                             <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">{{session.user}}<i class="material-icons right">arrow_drop_down</i></a></li>
                         {% else %}
@@ -59,6 +63,7 @@
 
                 <li><a href="{{ url_for('genre_list') }}">Genre List</a></li>
 
+                <!-- Display the appropriate links depending on whether or not the user is logged in -->
                 {% if session.user %}
                     <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
 
@@ -73,6 +78,7 @@
             </ul>
         </header>
 
+        <!-- Section to display the flashed messages from app.py depending on user action -->
         <section>
             {% with messages = get_flashed_messages() %}
                 {% if messages %}
@@ -85,6 +91,8 @@
             {% endwith %}
         </section>
 
+        <!-- The div containing the block content of the remaining template files. All template content will be placed within here -->
+        <!-- Note that the container class was removed here in order to place a full width background image in index.html -->
         <div>
             {% block content %}
 
@@ -123,6 +131,7 @@
             </div>
         </footer>
 
+        <!-- Jquery script containing the various document.ready functions for materialize components -->
         <script>
             $(document).ready(function() {
                 $(".dropdown-trigger").dropdown();
@@ -140,6 +149,7 @@
             });
         </script>
 
+        <!-- Script for the randomised quote display in index.html -->
         <script src="{{ url_for('static', filename='js/quote.js') }}" type="text/javascript"></script>
     </body>
 </html>

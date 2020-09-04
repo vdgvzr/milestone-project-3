@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 
+<!-- In order to access the base.html code, all templates must 'extend' -->
 {% extends 'base.html' %}
 
+<!-- Content that will be placed within the base.html block -->
 {% block content %}
     <div class="home-header">
         <div class="carousel hide-on-med-and-down">
+
+            <!-- Displays the top 10 highest rated books in materialize carousel from 1 to 10 -->
             {% for book in books | sort(attribute='rating') | reverse %}
                 <a class="carousel-item" href="{{ url_for('book_review', book_id=book._id) }}"><img src="{{ book.image_url }}"></a>
             {% endfor %}
@@ -17,6 +21,7 @@
         <div class="col s12">
             <div id="quote-box"></div>
             
+            <!-- Displays the randomly generated quotes pulled from quote.js -->
             {% for quote in quotes %}
                 <div class="quote-content">
                     <p>"{{ quote.book_quote }}"</p>
@@ -40,6 +45,7 @@
             <div class="col s12 m4"></div>
         </div>
 
+        <!-- For loop provides a display of the most recently added books in reverse order as queried from mongo in app.py, line 56 -->
         <div class="row grey darken-4">
             {% for recent in recents %}
                 <div class="col s8 offset-s2 m4 l2">
@@ -50,6 +56,8 @@
 
                         <div class="card-content">
                             <div style="height: 20px;">
+
+                                <!-- For each card throughout the project, an if statement will display the rating IF one is present, else display message -->
                                 {% if recent.rating %}
                                     <p><i class="material-icons card-star">star_rate</i> {{ recent.rating }}</p>
                                 {% else %}
@@ -78,6 +86,7 @@
                     <div class="col s12 m12">
                         <h4 class="title center-align">Search and browse books</h4>
                         
+                        <!-- Search bar -->
                         <nav>
                             <div class="nav-wrapper grey darken-4">
                                 <form action="{{ url_for('search_books') }}">
@@ -94,6 +103,7 @@
                     </div>
                 </div>
 
+                <!-- For loop displaying the complete list of book genres in 4 columns -->
                 <div class="row">
                     <div class="col s12 m12 genre-box">
                         {% for genre in genre %}

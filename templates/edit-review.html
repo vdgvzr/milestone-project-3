@@ -5,6 +5,7 @@
 {% block content %}
     <h3 class="center-align title">Edit Your Review</h3>
 
+    <!-- Displays the same add review form from within book-review.html, but with the values pre filled with that review's values -->
     <div class="container">
         <div class="row">
             <form id="rating-form" action="{{ url_for('update_review', review_id=review._id, book_id=review.book_id) }}" method="POST" class="col s12"> 

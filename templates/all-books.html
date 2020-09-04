@@ -6,6 +6,7 @@
     <div class="container">
         <h4 class="title center-align">All Books</h4>
 
+        <!-- Generates all cards displayed in alphabetical order, following the same code outline as the recents in index.html -->
         <div class="row grey darken-4">
             {% for book in books | sort(attribute="book_title") %}
                 <div class="col s8 offset-s2 m4 l2">
@@ -38,6 +39,8 @@
             {% endfor %}
         </div>
 
+        <!-- Use of flask pagination -->
+        <!-- Note that because of a bug with flask pagination, this template is only limited to 6 results per page (app.py, line 147) -->
         <div class="center">
             {{ pagination.links }}
         </div>

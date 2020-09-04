@@ -6,6 +6,8 @@
     <div class="container">
         <h3 class="center-align title">Edit Book</h3>
 
+        <!-- Displays the same form as in add-book.html, but with the values pre-filled with that book's values -->
+        <!-- Form will POST to the database using the update method through the 'update_book' route -->
         <div class="row">
             <form action="{{ url_for('update_book', book_id=book._id) }}" method="POST" class="col s12">
                 <div class="row">

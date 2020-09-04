@@ -6,6 +6,8 @@
     <div class="container">
         <h3 class="center-align title">{{ genre.genre_name }}</h3>
 
+        <!-- Same code template as with all-books.html, except only books with that particular genre will be displayed -->
+        <!-- Page will be accessed from within both index.html, and genres.html (the genre list page) -->
         <div class="row grey darken-4">
             {% for book in books | sort(attribute="book_title") %}
                 {% if book.genre_name == genre.genre_name %}
