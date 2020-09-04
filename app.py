@@ -1,6 +1,6 @@
 # Import installed libraries and dependencies to the Python file.
 import os
-from os import path
+from dotenv import load_dotenv
 from flask import (
     Flask,
     render_template,
@@ -21,14 +21,14 @@ from werkzeug.security import (
     generate_password_hash,
     check_password_hash
 )
-if path.exists('env.py'):
-    import env
+
+load_dotenv()
 
 # Define the app here
 app = Flask(__name__)
 
 '''Set the MONGO_URI and SECRET_KEY environment
-variables which are stored in a .env file.
+variables which are stored in the env.py file.
 This file is ignored from repository by the
 .gitignore file.'''
 app.config['MONGO_DBNAME'] = os.environ.get('MONGO_DBNAME')
