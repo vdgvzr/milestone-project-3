@@ -279,3 +279,8 @@ nav ul a:hover {
 .rating-button {
     display: inline;
 }
+
+.link:hover {
+    color: goldenrod;
+    transition: 0.3s;
+}
