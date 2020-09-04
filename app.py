@@ -1,8 +1,6 @@
 # Import installed libraries and dependencies to the Python file.
 import os
 from os import path
-if path.exists('env.py'):
-    import env
 from flask import (
     Flask,
     render_template,
@@ -23,6 +21,8 @@ from werkzeug.security import (
     generate_password_hash,
     check_password_hash
 )
+if path.exists('env.py'):
+    '''import env'''
 
 # Define the app here
 app = Flask(__name__)
@@ -31,8 +31,8 @@ app = Flask(__name__)
 variables which are stored in a .env file.
 This file is ignored from repository by the
 .gitignore file.'''
-app.config['MONGO_DBNAME'] = 'pen_hub'
-app.config['MONGO_URI'] = os.environ.get('MONGO_URI')
+app.config['MONGO_DBNAME'] = os.environ.get('MONGO_DBNAME')
+app.config['MONGO_URI'] = os.getenv('MONGO_URI')
 app.secret_key = os.environ.get('SECRET_KEY')
 
 # Set database variable
