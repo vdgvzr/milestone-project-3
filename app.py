@@ -31,7 +31,7 @@ This file is ignored from repository by the
 .gitignore file.'''
 app.config["MONGO_DBNAME"] = 'pen_hub'
 app.config["MONGO_URI"] = config('MONGO_URI')
-app.secret_key = config('SECRET_KEY')
+app.secret_key = os.environ.get('SECRET_KEY')
 
 # Set database variable
 mongo = PyMongo(app)

@@ -1,5 +1,6 @@
 click==7.1.2
 DateTime==4.3
+decouple==0.0.7
 dnspython==2.0.0
 Flask==1.1.2
 flask-paginate==0.7.0
