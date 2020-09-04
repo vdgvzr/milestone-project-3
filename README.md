@@ -254,14 +254,34 @@ To deploy the app on Heroku, the following steps have been followed:
 
 ***
 
-***
-
 ## Credits
+
+### Content
+
+- All content was written by myself, however book information and reviews have been copied from [GoodReads](https://www.goodreads.com/).
 
 ### Media:
 
+- Overall and logo design inspired by a website which shall remain nameless for the purposes of this project..
+- I created the logo simply using css, but used a screenshot to create the favicon using [Favicon](https://www.favicon-generator.org/)
+- The index and search error images were found as part of the free [Adobe Stock](https://stock.adobe.com/uk/) promotion.
 
+### Code
+
+- A lot of the coding content I learned thanks to the Data Centric Development module provided by [Code Institute](https://codeinstitute.net/).
+- I also used online code resource websites such as [Stack Overflow](https://stackoverflow.com/) and [W3Schools](https://www.w3schools.com/).
+- [Star Rating Concept](https://webdevtrick.com/css-star-rating/) as something left to implement.
 
 ### Acknowledgements
 
-* https://webdevtrick.com/css-star-rating/ for star rating concept.
+Special thanks go to :
+
+- The Code Institute mentoring team, for their patience and expertise.
+- My mentor, Mark Railton for his support and encouragement.
+- The Code Institute Slack community for their knowledge and quick responses.
+
+This site is for educational use only.
+
+Shaun Lindsley/vdgvzr
+
+Code Institute 2020
