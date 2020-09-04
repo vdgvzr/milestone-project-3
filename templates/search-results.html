@@ -19,9 +19,9 @@
 
                 <!-- Displays relevent links depending on whether user is logged in or not -->
                 {% if session.user %}
-                    <a href="{{ url_for('add_book') }}">Can't find what you're looking for? Add your book here!</a>
+                    <span>Can't find what you're looking for? <a class="link" href="{{ url_for('add_book') }}">Add your book here!</a></span>
                 {% else %}
-                    <a href="{{ url_for('login') }}">Can't find what you're looking for? Register/login now!</a>
+                    <span>Can't find what you're looking for? <a class="link" href="{{ url_for('login') }}">Register/login now!</a></span>
                 {% endif %}
             </div>
         {% endif %}
