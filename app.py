@@ -113,10 +113,23 @@ def book_review(book_id):
         # Else, set the value to 0 as a string
         avg_rating = '0'
 
+    search = False
+    x = request.args.get('x')
+    if x:
+        search = True
+
+    page = request.args.get(get_page_parameter(), type=int, default=1)
+    reviews = mongo.db.review.find({'book_id': book_id})
+    pagination = Pagination(
+        page=page,
+        total=reviews.count(),
+        search=search,
+        record_name=reviews
+    )
+
     # Declare page variables
     the_book = mongo.db.books.find_one({'_id': ObjectId(book_id)})
     all_genre = mongo.db.genre.find()
-    reviews = mongo.db.review.find({'book_id': book_id})
     no_of_docs = mongo.db.review.count_documents({'book_id': book_id})
     # Set avergage rating field with whatever is returned
     mongo.db.books.update(
@@ -130,7 +143,8 @@ def book_review(book_id):
         genre=all_genre,
         review=reviews,
         average=avg_rating,
-        review_amount=no_of_docs
+        review_amount=no_of_docs,
+        pagination=pagination
     )
 
 
