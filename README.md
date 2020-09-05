@@ -240,7 +240,7 @@ To test responsiveness, I have used Google's dev tools to inspect the site betwe
 
 * To ensure that the site can be used across multiple devices and platforms, along with the Google dev tools to test responsiveness, I have also tested the site across different web browsers.
     - The site was tested throughout development using Google Chrome.
-    - When testing on Safari, some of the text responsiveness began causing an issue. This was quickly rectified by changing the size from px to ...
+    - When testing on Safari, some of the text (e.g card-title) responsiveness began causing an issue. This was quickly rectified by changing the height of the div to accommodate longer book titles.
 
 ***
 
