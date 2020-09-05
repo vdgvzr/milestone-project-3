@@ -33,6 +33,7 @@ an affiliate link. The site owner will then be able to earn money based on each 
     - [CSS](https://github.com/vdgvzr/milestone-project-3#css)
     - [JavaScript](https://github.com/vdgvzr/milestone-project-3#javascript)
     - [Python](https://github.com/vdgvzr/milestone-project-3#python)
+    - [Compatibility](https://github.com/vdgvzr/milestone-project-3#compatibility)
 5. [Deployment](https://github.com/vdgvzr/milestone-project-3#deployment)
     - [Deploying The Site](https://github.com/vdgvzr/milestone-project-3#deploying-the-site)
     - [Deploying Locally](https://github.com/vdgvzr/milestone-project-3#deploying-locally)
@@ -212,18 +213,34 @@ To test responsiveness, I have used Google's dev tools to inspect the site betwe
 ### HTML
 
 * [HTMLValidator](https://validator.w3.org/)
+    - The only errors that appeared present as a result of validating the HTML were the Jinja templating syntax, as demonstrated below. Everything else was validating properly.
+    Note - all code beautification was performed manually.
+
+![HTML-validator](static/assets/images/HTML-validator.png "HTML-validator")
 
 ### CSS
 
 * [CSSValidator](https://jigsaw.w3.org/css-validator/)
+    - The only warnings present in the style.css file that of my overriding of the Materialize colour scheme for certain elements. As this is the easiest way to override the Materialize CSS
+    without installing Sass, I have not changed the styling here. The rest of the file is valid.
+
+![CSS-validator](static/assets/images/CSS-validator.png "CSS-validator")
 
 ### JavaScript
 
 * [JavaScriptValidator](https://esprima.org/demo/validate.html)
+    - All javascript code in [password.js](static/assets/js/password.js), [quote.js](static/assets/js/quote.js) and [title.js](static/assets/js/title.js) have ach passed as valid code, no errors present.
 
 ### Python
 
 * [PythonCodeChecker](https://extendsclass.com/python-tester.html)
+    - [app.py](app.py) has passed the validator without any errors.
+
+### Compatibility
+
+* To ensure that the site can be used across multiple devices and platforms, along with the Google dev tools to test responsiveness, I have also tested the site across different web browsers.
+    - The site was tested throughout development using Google Chrome.
+    - When testing on Safari, some of the text responsiveness began causing an issue. This was quickly rectified by changing the size from px to ...
 
 ***
 
@@ -324,8 +341,9 @@ To deploy the app on Heroku, the following steps have been followed:
 ### Code
 
 - A lot of the coding content I learned thanks to the Data Centric Development module provided by [Code Institute](https://codeinstitute.net/).
-- I also used online code resource websites such as [Stack Overflow](https://stackoverflow.com/) and [W3Schools](https://www.w3schools.com/).
+- I also used online code resource websites such as [Stack Overflow](https://stackoverflow.com/) and [W3Schools](https://www.w3schools.com/) to overcome challenges not present on the course itself.
 - [Star Rating Concept](https://webdevtrick.com/css-star-rating/) as something left to implement.
+- [Flask Pagination](https://github.com/lixxu/flask-paginate).
 
 ### Acknowledgements
 
