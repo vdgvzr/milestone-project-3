@@ -136,7 +136,14 @@ nav ul a:hover {
 .card .card-content .card-title {
     height: 40px;
     position: relative;
-    font-size: 1.1rem;
+    font-size: 1rem;
+}
+
+.card .card-content {
+    padding: 10px;
+    height: 15vh;
+    background-color: #2e2e2e;
+    vertical-align: middle;
 }
 
 .card .card-image img {
