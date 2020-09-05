@@ -73,8 +73,10 @@
                     </ul>
                 </div>
             </nav>
+        </header>
 
-            <ul class="sidenav" id="mobile-demo">
+        <!-- Bug fix, move the sidenav outside of the 'navbar-fixed class' in order for the links to be clickable -->
+        <ul class="sidenav" id="mobile-demo">
                 <li><a href="{{ url_for('home') }}">Home</a></li>
 
                 <li><a href="{{ url_for('all_books') }}">All Books</a></li>
@@ -94,7 +96,6 @@
                     <li><a href="{{ url_for('register') }}">Register</a></li>
                 {% endif %}
             </ul>
-        </header>
 
         <!-- Section to display the flashed messages from app.py depending on user action -->
         <section>

@@ -73,6 +73,7 @@ def home():
 
 @app.route('/all_books')
 def all_books():
+    # Flask pagination
     search = False
     x = request.args.get('x')
     if x:
