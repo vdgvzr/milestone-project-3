@@ -12,7 +12,7 @@ from flask import (
 )
 from flask_paginate import (
     Pagination,
-    get_page_args
+    get_page_parameter
 )
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
@@ -73,31 +73,23 @@ def home():
 
 @app.route('/all_books')
 def all_books():
-    # Initialising the variables to be used with flask pagination
-    page, per_page, offset = get_page_args(
-        page_parameter='page',
-        per_page_parameter='per_page'
-    )
+    search = False
+    x = request.args.get('x')
+    if x:
+        search = True
 
-    # Assigning the variables to be used for flask pagination of books
-    per_page = 6
-    offset = page * per_page
-    total = mongo.db.books.find().count()
+    page = request.args.get(get_page_parameter(), type=int, default=1)
     books = mongo.db.books.find()
-    paginated_books = books[offset: offset + per_page]
-
-    # Flask pagination variables for page render
     pagination = Pagination(
         page=page,
-        per_page=per_page,
-        total=total,
-        css_framework='materialize'
+        total=books.count(),
+        search=search,
+        record_name=books
     )
+
     return render_template(
         'all-books.html',
-        books=paginated_books,
-        page=page,
-        per_page=per_page,
+        books=books,
         pagination=pagination
     )
 
@@ -150,32 +142,25 @@ def genre_list():
 
 @app.route('/genre/<genre_id>')
 def genre(genre_id):
-    # Setting up pagination within the genre page, same as the all_books route
-    page, per_page, offset = get_page_args(
-        page_parameter='page',
-        per_page_parameter='per_page'
-    )
+    search = False
+    x = request.args.get('x')
+    if x:
+        search = True
 
-    per_page = 6
-    offset = page * per_page
-    total = mongo.db.books.find().count()
+    page = request.args.get(get_page_parameter(), type=int, default=1)
     books = mongo.db.books.find()
-    paginated_books = books[offset: offset + per_page]
-
     pagination = Pagination(
         page=page,
-        per_page=per_page,
-        total=total,
-        css_framework='materialize'
+        total=books.count(),
+        search=search,
+        record_name=books
     )
 
     the_genre = mongo.db.genre.find_one({'_id': ObjectId(genre_id)})
     return render_template(
         'genre.html',
+        books=books,
         genre=the_genre,
-        books=paginated_books,
-        page=page,
-        per_page=per_page,
         pagination=pagination
     )
 
