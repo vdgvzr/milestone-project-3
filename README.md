@@ -19,18 +19,25 @@ an affiliate link. The site owner will then be able to earn money based on each 
     - [Developer Goals](https://github.com/vdgvzr/milestone-project-3#developer-goals)
     - [User Stories](https://github.com/vdgvzr/milestone-project-3#user-stories)
     - [Design](https://github.com/vdgvzr/milestone-project-3#design)
+        - [Frameworks](https://github.com/vdgvzr/milestone-project-3#frameworks)
         - [Colours Used](https://github.com/vdgvzr/milestone-project-3#colours-used)
         - [Fonts](https://github.com/vdgvzr/milestone-project-3#fonts)
+        - [Icons](https://github.com/vdgvzr/milestone-project-3#icons)
         - [Wireframes](https://github.com/vdgvzr/milestone-project-3#wireframes)
 2. [Features](https://github.com/vdgvzr/milestone-project-3#features)
     - [Existing Features](https://github.com/vdgvzr/milestone-project-3#existing-features)
     - [Features Left to Implement](https://github.com/vdgvzr/milestone-project-3#features-left-to-implement)
 3. [Testing](https://github.com/vdgvzr/milestone-project-3#testing)
-4. [Deployment](https://github.com/vdgvzr/milestone-project-3#deployment)
+4. [Validation](https://github.com/vdgvzr/milestone-project-3#validation)
+    - [HTML](https://github.com/vdgvzr/milestone-project-3#html)
+    - [CSS](https://github.com/vdgvzr/milestone-project-3#css)
+    - [JavaScript](https://github.com/vdgvzr/milestone-project-3#javascript)
+    - [Python](https://github.com/vdgvzr/milestone-project-3#python)
+5. [Deployment](https://github.com/vdgvzr/milestone-project-3#deployment)
     - [Deploying The Site](https://github.com/vdgvzr/milestone-project-3#deploying-the-site)
     - [Deploying Locally](https://github.com/vdgvzr/milestone-project-3#deploying-locally)
-5. [Technologies Used](https://github.com/vdgvzr/milestone-project-3#technologies-used)
-6. [Credits](https://github.com/vdgvzr/milestone-project-3#credits)
+6. [Technologies Used](https://github.com/vdgvzr/milestone-project-3#technologies-used)
+7. [Credits](https://github.com/vdgvzr/milestone-project-3#credits)
     - [Content](https://github.com/vdgvzr/milestone-project-3#content)
     - [Media](https://github.com/vdgvzr/milestone-project-3#media)
     - [Code](https://github.com/vdgvzr/milestone-project-3#code)
@@ -42,7 +49,7 @@ an affiliate link. The site owner will then be able to earn money based on each 
 
 ### Goals
 
-As part of the Full Stack Developer course from Code Institute, this project was designed to fulfill the scope of creating an application
+As part of the Full Stack Developer course from [Code Institute](https://codeinstitute.net/), this project was designed to fulfill the scope of creating an application
 that utilises CRUD operations on a database.
 
 The primary demographic for the site will of course be book lovers, however there will likely be a very wide and diverse range
@@ -76,6 +83,21 @@ As a user, I would like to:
 I used the materialize framework to design the site. As much consideration as possible has gone into implementing components and altering the styles of each.
 The books to be displayed to the user as easy-to-navigate interactive cards that contain essential information about the book, as well as a book rating on display.
 
+The colour scheme and logo design was influenced by the name 'Pen Hub' being a play on words, being that pens are associated with writing books, and the site will
+act as a 'hub' for said books. As books and book readers differ hugely across all demographics, it was important to maintain a smart, yet casual overall design.
+
+#### Frameworks
+
+* [Materialize 1.0.0](https://materializecss.com/)
+    - I chose to use Materialize for the design framework as opposed to bootstrap because I prefer how simple it is to implement and modify, leaving more space for me
+    to spend more time developing the logic and functionality of the site.
+
+* [JQuery 3.5.1](https://jquery.com/)
+    - To minimise the use of JavaScript in my project and to concentrate more on Python, I have used JQuery as a foundation to build my scripts upon.
+
+* [Flask 1.1.2](https://flask.palletsprojects.com/en/1.1.x/)
+    - Flask has been used as a framwork for this project in order to render the back end with the front.
+
 #### Colours Used
 
 I chose the colors based on the initial design of using yellow and black with grey to highlight the important sections, such as the book cards.
@@ -102,7 +124,13 @@ Materialize Colors:
 
 The font pair I chose for the site was Roboto and Noto Sans JP from [Google Fonts](https://fonts.google.com) because it closesly matches the smart-casual aesthetic of the site.
 
+#### Icons
+
+[Materialize Icons](https://material.io/) Have been used exclusively for the site, as they are designed to work with the Materialize css framework.
+
 #### Wireframes
+
+The initial wireframing design was created using [Balsamiq](https://balsamiq.cloud/).
 
 High quality mockups of the site can be found [here](static/assets/mockups/mockups.png "Mockups").
 
@@ -134,33 +162,68 @@ The implementation has stayed fairly consistent to the original design.
 
 * I would like the user profile to be expanded to include an option to upload a profile picture.
 * I would also like to include a report or email feedback page, in case there are users leaving inappropriate reviews or book entries.
+* The ability to register as an admin. As the site grows, there will no doubt be a need for the moderation of other users and content.
 
 ***
 
 ## Testing
 
-### Homepage
+### Creating an Account
 
+I created a test account in order to use the full functionality of the site. Once created, I tested the login by deliberately providing
+username and password errors to test how error messaging and rerouting works. I also tried to register with the same account name, thus providing the
+correct course for a user to be redirected to the login page. In future, I would like to implement a password recovery option if the user has
+forgotten their password.
 
+### Add, Edit, Delete a Book
+
+Whilst building the site, I have created multiple book entries, the information for which has been sourced online. In theory, there can be no end to
+how many books are added, and users are encouraged to add books as often as possible, for example, if the search function returns no results.
+
+For some book entries, I have deliberately made spelling errors so that I am able to edit that entry and replace. If there is a book that shouldn't be there,
+I have the ability as a user to delete the entry entirely, not before being prompted by a modal to avoid user error by accidentally clicking on the delete button.
+
+After successfully building the book database, I was able to go through each relevent book display page and access the same review page through each.
+
+### Add, Edit, Delete a Review
+
+As with the book CRUD, the review Crud follows the same principles. If the user is logged in, they are able to view the review form placed at the top of the review list.
+That review will appear as the last in the list. In future, I would like for the user to have the ability to 'upvote' other user's reviews, in order to create a sorting
+system of the reviews based on the highest amount of 'votes'.
+
+As a user, if I am not satisfied with the review, I am able to edit or delete my own review of the book and nobody elses. Thus ensuring that other users views do not get
+deleted maliciously. If an admin account is implemented, they would be able to moderate the reviews of the books as well as the book information itself.
 
 ### Responsiveness
 
+Thankfully, Materialize provides an easy-to-implement grid system in order to arrange the responsiveness of the site. I have taken full advantage of this
+and have added the appropriate styles to the elements in a way in which media queries within my own [stlye.css](static/assets/styles/style.css) file are not needed.
 
-
-### Test-Driven Development
-
-
-
-### Testing Scenarios
-
-1. 
-    * 
-
+To test responsiveness, I have used Google's dev tools to inspect the site between various screen sizes.
 
 ### Other Bugs and Problems
 
 *  A 5 star rating system was to be implemented for the user to rate a book. After trying to implement using css, it became known that it is very difficult to do with materialize as the form framework.
-* There is a known bug with flask pagination, so the design of the search and all-books pages has been impacted as a result.
+
+***
+
+## Validation
+
+### HTML
+
+* [HTMLValidator](https://validator.w3.org/)
+
+### CSS
+
+* [CSSValidator](https://jigsaw.w3.org/css-validator/)
+
+### JavaScript
+
+* [JavaScriptValidator](https://esprima.org/demo/validate.html)
+
+### Python
+
+* [PythonCodeChecker](https://extendsclass.com/python-tester.html)
 
 ***
 
@@ -188,9 +251,13 @@ To deploy the app on Heroku, the following steps have been followed:
     - MONGO_URI: `mongodb+srv://<username>:<password>@<cluster_name>-qtxun.mongodb.net/<database_name>?retryWrites=true&w=majority;`
     - SECRET_KEY: <secret_key>
 
-8. Deploy the app on Heroku. needs more
+8. Add, commit and push all files to Heroku using the following command:
 
-9. The app can now be opened and viewed.
+    - `git push heroku master`
+
+9. The app is now deployed. In 'More', select `Restart All Dynos` to ensure the app is running up to date.
+
+10. The app can now be opened and viewed in the browser [https://pen-hub.herokuapp.com/](https://pen-hub.herokuapp.com/).
 
 ### Deploying Locally
 

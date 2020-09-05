@@ -43,42 +43,10 @@
         </div>
 
         <div class="row">
-            <div class="col s12 m12 l4 center-align">
-                <a href="https://www.amazon.com/s?k={{ book.book_title }}" class="waves-effect waves-light btn btn-gold">Buy Book</a>
+            <div class="col s12 center ">
+                <button href="https://www.amazon.com/s?k={{ book.book_title }}" class="waves-effect waves-light btn btn-gold">Buy Book Here<i class="material-icons right">launch</i></button>
             </div>
         </div>
-
-        <!-- For loop to display all reviews on that book -->
-        {% for rev in review %}
-            <div class="row">
-                <div class="col s12 grey darken-4">
-                    <div>
-                        <p><span class="review-user">{{ rev.username }}</span> rated this {{ rev.rating }}/5 <span class="review-date"> - {{ rev.created_at }}</span></p>
-                    </div>
-
-                    <p class="review-text">"{{ rev.review }}"</p>
-
-                    <!-- Allows the user to edit or delete their own review, but not others -->
-                    {% if session.user == rev.username %}
-                        <a href="{{ url_for('edit_review', book_id=book._id, review_id=rev._id) }}" class="waves-effect waves-light btn left btn-small yellow darken-2">Edit</a>
-
-                        <a href="#modal2{{ rev._id }}" class="waves-effect waves-light btn left btn-small yellow darken-2 modal-trigger">Delete</a>
-                    {% endif %}
-                </div>
-            </div>
-
-            <div id="modal2{{ rev._id }}" class="modal">
-                <div class="modal-content">
-                    <h4>Are you sure you want to delete your review?</h4>
-                </div>
-
-                <div class="modal-footer">
-                    <a href="#!" class="modal-close waves-effect waves-green btn-flat left">Cancel</a>
-
-                    <a href="{{ url_for('delete_review', book_id=book._id, review_id=rev._id) }}" class="modal-close waves-effect waves-green btn-flat right">Delete</a>
-                </div>
-            </div>
-        {% endfor %}
 
         <!-- Only users are able to view the review form -->
         {% if session.user %}
@@ -105,7 +73,7 @@
                     </div>
 
                     <div class="row">
-                        <i class="material-icons prefix title">grade</i>
+                        <i class="material-icons prefix title">Rate this book</i>
 
                         <p class="rating-button">
                             <label>
@@ -154,6 +122,38 @@
                 </form>
             </div>
         {% endif %}
+
+        <!-- For loop to display all reviews on that book -->
+        {% for rev in review %}
+            <div class="row">
+                <div class="col s12 grey darken-4">
+                    <div>
+                        <p><span class="review-user">{{ rev.username }}</span> rated this {{ rev.rating }}/5 <span class="review-date"> - {{ rev.created_at }}</span></p>
+                    </div>
+
+                    <p class="review-text">"{{ rev.review }}"</p>
+
+                    <!-- Allows the user to edit or delete their own review, but not others -->
+                    {% if session.user == rev.username %}
+                        <a href="{{ url_for('edit_review', book_id=book._id, review_id=rev._id) }}" class="waves-effect waves-light btn left btn-small yellow darken-2">Edit</a>
+
+                        <a href="#modal2{{ rev._id }}" class="waves-effect waves-light btn left btn-small yellow darken-2 modal-trigger">Delete</a>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div id="modal2{{ rev._id }}" class="modal">
+                <div class="modal-content">
+                    <h4>Are you sure you want to delete your review?</h4>
+                </div>
+
+                <div class="modal-footer">
+                    <a href="#!" class="modal-close waves-effect waves-green btn-flat left">Cancel</a>
+
+                    <a href="{{ url_for('delete_review', book_id=book._id, review_id=rev._id) }}" class="modal-close waves-effect waves-green btn-flat right">Delete</a>
+                </div>
+            </div>
+        {% endfor %}
 
         <div id="modal1" class="modal">
             <div class="modal-content">
