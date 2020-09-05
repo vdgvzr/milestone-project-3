@@ -168,6 +168,11 @@ nav ul a:hover {
     color: gold;
 }
 
+.welcome-card {
+    padding: 24px;
+    border-radius: 0 0 2px 2px;
+}
+
 /* ----------------------------------- Reviews */
 
 .review-image {
