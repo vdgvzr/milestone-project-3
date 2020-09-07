@@ -57,6 +57,10 @@ a {
     transition: 0.3s;
 }
 
+.pagination {
+    margin-bottom: 50px;
+}
+
 /* ----------------------------------- Navbar */
 
 nav .brand-logo {
@@ -134,9 +138,11 @@ nav ul a:hover {
 }
 
 .card .card-content .card-title {
-    height: 40px;
     position: relative;
     font-size: 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .card .card-content {
@@ -287,6 +293,10 @@ textarea.materialize-textarea:focus:not([readonly])+label,
 [type="checkbox"].filled-in:checked+span:not(.lever):after {
     border: 2px solid goldenrod;
     background-color: goldenrod;
+}
+
+.btn:focus, .btn-large:focus, .btn-small:focus, .btn-floating:focus {
+    background-color: #424242;
 }
 
 /* ----------------------------------- Misc */

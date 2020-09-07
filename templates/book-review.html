@@ -44,7 +44,7 @@
 
         <div class="row">
             <div class="col s12 center ">
-                <button href="https://www.amazon.com/s?k={{ book.book_title }}" class="waves-effect waves-light btn btn-gold">Buy Book Here<i class="material-icons right">launch</i></button>
+                <a href="https://www.amazon.com/s?k={{ book.book_title }}" class="waves-effect waves-light btn btn-gold" target="_blank">Buy Book Here<i class="material-icons right">launch</i></a>
             </div>
         </div>
 
@@ -155,7 +155,7 @@
             </div>
         {% endfor %}
 
-        <div class="center">
+        <div class="pagination center">
             {{ pagination.info }}
             {{ pagination.links }}
         </div>
