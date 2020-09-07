@@ -400,4 +400,4 @@ def delete_review(book_id, review_id):
 
 # Run the app
 if __name__ == '__main__':
-    app.run(port=os.environ.get('PORT'), debug=True)
+    app.run(port=os.environ.get('PORT'), debug=False)
