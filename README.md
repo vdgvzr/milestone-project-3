@@ -205,6 +205,8 @@ To test responsiveness, I have used Google's dev tools to inspect the site betwe
 ### Other Bugs and Problems
 
 *  A 5 star rating system was to be implemented for the user to rate a book. After trying to implement using css, it became known that it is very difficult to do with materialize as the form framework.
+* Another known bug is to do with the Flask pagination. I have implemented the pagination as is, however it will only display in the pagination.info tag as showing 10 results always. This is something
+I would like to have rectified in the future. See: [Flask Pagination](https://github.com/lixxu/flask-paginate).
 
 ***
 
